@@ -162,6 +162,10 @@ div#main.right #panels-container {
     min-width: 44px;
 }
 
+.panel {
+    background-color: var(--colorBgAlphaBlur);
+}
+
 #panels-container { /*FIXING SIDEBAR PART 3 */
     background-color: transparent;
     margin-right: 5px;
