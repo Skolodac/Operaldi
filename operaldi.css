@@ -163,7 +163,7 @@ div#main.right #panels-container {
 }
 
 .panel {
-    background-color: var(--colorBgAlphaBlur);
+    background-color: color-mix(in srgb, var(--colorBg), var(--lessTransparent));
 }
 
 #panels-container { /*FIXING SIDEBAR PART 3 */
