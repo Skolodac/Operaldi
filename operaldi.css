@@ -113,7 +113,7 @@ input[type=checkbox]:before, input[type=checkbox]:after { /* COLOR OF ICON IN CH
     height: 34px; /* HEIGHT OF URL BAR */
 }
 
-.disable-titlebar#browser.win .window-buttongroup {
+.disable-titlebar#browser.win .window-buttongroup button {
     height: 44px; /* HEIGHT OF WINDOW BUTTONS */
 }
 
