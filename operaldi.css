@@ -246,7 +246,7 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
     color: var(--colorFg); /* FONT COLOR OF NON ACTIVE TAB */
 }
 
-.density-on .tab.active:not(.tab-in-accordion, .tab-accordion) {
+.density-on:not(.tabs-at-edge) .tab.active:not(.tab-in-accordion, .tab-accordion) {
     box-shadow: none; /* REMOVE SHADOW UNDER ACTIVE TAB */
 }
 
