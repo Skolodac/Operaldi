@@ -149,6 +149,14 @@ input[type=checkbox]:before, input[type=checkbox]:after { /* COLOR OF ICON IN CH
     --LowlightColor: var(--colorFg); /* FONT COLOR OF WWW.google.COM */
 }
 
+.OmniDropdown { 
+    background-color: var(--colorBg); /* CHANGING BG COLOR OF DROPDOWN URL */
+}
+
+.OmniLinkItem:not(.OmniLinkItem--Highlighted):hover { 
+    background-color: var(--colorHighlightBg); /* CHANGING BG COLOR OF HOVER IN DROPDOWN URL */
+}
+
 .address-top .mainbar {
     border-bottom: none; /* REMOVE BORDER UNDER MAINBAR */
 }
@@ -320,7 +328,7 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 }
 
 #browser .tab-position.colored .stack-counter {
-    background-color: var(--colorHighlightBgDark); /* BG COLOR OF TAB GROUP NUMBER */
+    background-color: var(--colorHighlightBg); /* BG COLOR OF TAB GROUP NUMBER */
     color: var(--colorAccentBg);
 }
 
