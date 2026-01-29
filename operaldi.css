@@ -1,6 +1,7 @@
 /* TODO
 
 opravit:
+drag tile vypadá divně když je scrollbar
 zkusit barvu skupiny nastavit když tam neni nic nastavený
 zkusit upravit označený taby ctrl (asi nejde?)
 
@@ -8,7 +9,7 @@ zkusit upravit označený taby ctrl (asi nejde?)
 
 modernizace:
 jaký další modální okna???
-
+restart okno
 
 
 moooooooooooožnááá:
@@ -113,8 +114,9 @@ input[type=checkbox]:before, input[type=checkbox]:after { /* COLOR OF ICON IN CH
     height: 34px; /* HEIGHT OF URL BAR */
 }
 
-.disable-titlebar#browser.win .window-buttongroup button {
-    height: 44px; /* HEIGHT OF WINDOW BUTTONS */
+.density-on#browser.win.disable-titlebar .window-buttongroup {
+    height: 44px;
+    background-color: transparent;
 }
 
 .mainbar {
@@ -236,6 +238,7 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 
 #browser .tabbar-wrapper, #browser.tabs-top #header {
     background-color: transparent; /* BG COLOR OF TAB BAR PART 1 */
+    padding-bottom: 5px;
 }
 
 #browser:not(.transparent-tabbar) #tabs-tabbar-container {
@@ -244,10 +247,6 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
     -webkit-backdrop-filter: var(--blur);
     margin-left: 5px;
     border-radius: var(--radius);
-}
-
-.tabs-left .tabbar-wrapper { /* BG COLOR OF TAB BAR PART 3 */
-    margin-bottom: 5px;
 }
 
 .color-behind-tabs-on .tab {
@@ -705,6 +704,18 @@ input.circular, button.circular { /* ADJUSTING RADIUS OF HOVER OF DOWNLAOD FOLDE
 }
 
 /* TAB TILES MODE */
+
+.tab-dropzone.dropleft > h1, .tab-dropzone.dropright > h1, .tab-dropzone.droptop > h1, .tab-dropzone.dropbottom > h1 { /* ADJUSTING MOVING TILES BG COLORS */
+    background-color: color-mix(in srgb, color-mix(in srgb, var(--colorBg), var(--colorHighlightBg)), var(--lessTransparent));
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+}
+
+.tab-dropzone.dropcenter:not(.movingtile) > h1 { /* ADJUSTING MOVING TAB TO THE NEW WINDOW BG COLOR */
+    background-color: color-mix(in srgb, color-mix(in srgb, var(--colorBg), var(--colorHighlightBg)), var(--lessTransparent));
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+}
 
 #browser .tile:has(> .tiled.webpageview) { /* REMOVED DEFAULT BEHAVIOUR */
   border: 0 solid transparent;
