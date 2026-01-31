@@ -12,6 +12,7 @@ jaký další modální okna???
 restart okno
 
 
+
 moooooooooooožnááá:
 status bar
 vše na speed dialu
@@ -358,9 +359,14 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
     gap: 5px; /* ADJUSTING GAP BETWEEN ICONS */
 }
 
-div#main.right #panels-container {
+#main.right #panels-container {
     padding-bottom: 5px; /* MORE SPACE UNDER SETTINGS ICON */
     min-width: 44px; /* FIXING SIDEBAR PART 1 */
+}
+
+#panels-container[style*="min(0px"] { /* REMOVE PART 1 IF PANEL IS HIDDEN */
+    min-width: 0 !important;
+    padding-bottom: 0 !important;
 }
 
 .density-on #switch { /* FIXING SIDEBAR PART 2 + ADJUSTING */
