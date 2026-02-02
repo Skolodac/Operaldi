@@ -18,7 +18,7 @@ status bar
 vše na speed dialu
 horizontal tabs?? #tabs-tabbar-container.left
 mít panel i tab bar na obou stranách???
-arc like pinned taby?
+arc like pinned taby?*-/
 
 */ 
 
@@ -258,9 +258,14 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
     box-shadow: none; /* REMOVE SHADOW UNDER ACTIVE TAB */
 }
 
-.tabs-left .tab-audio, .tabs-right .tab-audio { /* AUDIO ICON */
-    margin-left: 5px; 
-    margin-top: -1px;
+#browser #tabs-container .tab.pinned.audio-on .tab-audio { /* ADJUSTING POSITION OF AUDIO ICON IN PINNED TAB */
+    left: 5px;
+    top: 5px;
+    padding: 1px 2px;
+}
+
+#browser:not(.alt-tabs) #tabs-container .tab:not(.tab-small).audio-on .favicon { /* HIDING FAVICON WHEN AUDIO IS PLAYING IN PINNED TAB */
+    transform: scale(0);
 }
 
 .separator hr { /* ADJUSTING SEPARATOR UNDER PINNED TABS */
