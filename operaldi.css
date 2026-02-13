@@ -14,10 +14,7 @@ restart okno
 
 
 moooooooooooožnááá:
-status bar
-vše na speed dialu
 horizontal tabs?? #tabs-tabbar-container.left
-mít panel i tab bar na obou stranách???
 arc like pinned taby?*-/
 
 */ 
@@ -246,8 +243,15 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
     background-color: color-mix(in srgb, var(--colorBg), var(--lessTransparent)); /* BG COLOR OF TAB BAR PART 2 */
     backdrop-filter: var(--blur);
     -webkit-backdrop-filter: var(--blur);
-    margin-left: 5px;
     border-radius: var(--radius);
+}
+
+#browser:not(.transparent-tabbar) #tabs-tabbar-container.left { /* BG COLOR OF TAB BAR PART 3 - TABSLEFT */
+    margin-left: 5px;
+}
+
+#browser:not(.transparent-tabbar) #tabs-tabbar-container.right { /* BG COLOR OF TAB BAR PART 3 - TABSRIGHT */
+    margin-right: 5px;
 }
 
 .color-behind-tabs-on .tab {
@@ -283,7 +287,7 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 }
 
 #tabs-container.left:has(.tab-strip.overflow), #tabs-container.right:has(.tab-strip.overflow) {
-    padding-right: 6px; /* FIXING SPACE NEXT TO TAB WHEN MANY TABS */
+    padding-right: 6px; /* FIXING SPACE NEXT TO TAB WHEN MANY TABS */ 
 }
 
 #tabs-tabbar-container {
@@ -364,7 +368,7 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
     gap: 5px; /* ADJUSTING GAP BETWEEN ICONS */
 }
 
-#main.right #panels-container {
+#panels-container {
     padding-bottom: 5px; /* MORE SPACE UNDER SETTINGS ICON */
     min-width: 44px; /* FIXING SIDEBAR PART 1 */
 }
@@ -380,17 +384,28 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
     -webkit-backdrop-filter: var(--blur);
     border-radius: var(--radius);
     padding-bottom: 5px;
-    padding-right: 4px;
+    padding-right: 5px;
     min-width: 44px;
 }
 
-#panels-container { /*FIXING SIDEBAR PART 3 */
+#panels-container { /* FIXING SIDEBAR PART 3 */
     background-color: transparent;
+}
+
+#main.right #panels-container { /* FIXING SIDEBAR PART 4 - TABSLEFT */
     margin-right: 5px;
 }
 
+#main.left #panels-container { /* FIXING SIDEBAR PART 4 - TABSRIGHT */
+    margin-left: 5px;
+}
+
 #panels-container.right:not(.icons) .panel-group, #panels-container.right.icons:not(:has(.SlideBar)) {
-    border-left: none; /* HIDE WEIRD BORDER IN SIDEBAR */
+    border-left: none; /* HIDE WEIRD BORDER IN SIDEBAR - TABSLEFT */
+}
+
+#panels-container.left:not(.icons) .panel-group, #panels-container.left.icons:not(:has(.SlideBar)) {
+    border-right: none; /* HIDE WEIRD BORDER IN SIDEBAR - TABSRIGHT */
 }
 
 .ExtensionToggleIcon.ExtensionToggleIcon--Expanded {
@@ -426,11 +441,19 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 /* WEB PANELS */
 
 #panels-container.right .panel {
-    padding: 5px 13px 5px 5px; /* ADJUSTING ALL PANELS  PART 1 */
+    padding: 5px 13px 5px 5px; /* ADJUSTING ALL PANELS  PART 1 - TABSLEFT */
 }
 
-.panel .outerScrollbar {
-    margin-right: 0px; /* ADJUSTING ALL PANELS PART 2 */
+#panels-container.left .panel {
+    padding: 5px 5px 5px 13px; /* ADJUSTING ALL PANELS  PART 1 - TABSRIGHT */
+}
+
+#panels-container.right .panel .outerScrollbar {
+    margin-right: 0px; /* ADJUSTING ALL PANELS PART 2 - TABSLEFT */
+}
+
+#panels-container.left .panel .outerScrollbar {
+    margin-right: 0px; /* ADJUSTING ALL PANELS PART 2 - TABSRIGHT */
 }
 
 .panel-group { /* ADJUSTING ALL PANELS PART 3 */
@@ -438,25 +461,43 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
     backdrop-filter: var(--blur);
     -webkit-backdrop-filter: var(--blur);
     border-radius: var(--radius);
+}
+
+#panels-container.right .panel-group { /* ADJUSTING ALL PANELS PART 4 - TABSLEFT */
     margin-right: 5px;
+}
+
+#panels-container.left .panel-group { /* ADJUSTING ALL PANELS PART 4 - TABSRIGHT */
+    margin-left: 5px;
 }
 
 .panel > header h1 { /* REMOVING TITLE OF PANELS */
     display: none;
 }
 
-#panels-container.right:not(.icons).overlay .panel-group {
-    box-shadow: none; /* REMOVING LEFT SHADOW */
+.SlideBar--FullHeight.alternate { /* HIDES BLACK BAR TO RESIZE PANELS */
+    right: auto;
+    left: -3px;
+    opacity: 0;
 }
+
+/*
+#panels-container.right:not(.icons).overlay .panel-group {
+    box-shadow: none;  REMOVING LEFT SHADOW - ASI NENI POTŘEBA
+} */
 
 #panels-container.overlay .panel-group {
     background-color: transparent;  /* TRANSPARENT BG WHEN OPENED WEB APP */
 }
 
-#panels .webpanel-stack .webpanel .webpanel-content { /* ADJUSTING WEB APP */
+#panels-container.right #panels .webpanel-stack .webpanel .webpanel-content { /* ADJUSTING WEB APP - TABSLEFT */
     margin-right: 7px;
-    border-bottom-right-radius: var(--radius);
-    border-top-right-radius: var(--radius);
+    /* border-bottom-right-radius: var(--radius); - ASI NENI POTŘEBA
+    border-top-right-radius: var(--radius); */
+}
+
+#panels-container.left #panels .webpanel-stack .webpanel .webpanel-content { /* ADJUSTING WEB APP - TABSRIGHT */
+    margin-left: 7px;
 }
 
 #panels .webpanel-stack .webpanel.visible { /* FIXING WEB APPS PANELS */
@@ -814,6 +855,176 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
 
 #browser .Switch-Button { /* REMOVING SHADOW FROM DOT OF SWITCH */
     box-shadow: none;
+}
+
+
+
+
+
+
+.startpage .startpage-navigation { /* ADJUSTING THE DESIGN OF SPEED DIAL NAVIGATION */
+    min-height: 44px;
+    background-color:  color-mix(in srgb, var(--colorBg), var(--lessTransparent));
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    box-shadow: none;
+    border-bottom-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+}
+
+.startpage .startpage-navigation .startpage-navigation-group .button-startpage:hover { /* BORDERR RADIUS OF HOVER */
+    background-color: var(--colorBg);
+    border-radius: var(--radius);
+}
+
+.startpage .startpage-navigation .startpage-navigation-group .button-startpage {
+    border-radius: 8px; /* BORDER RADIUS OF ACTIVE */
+    padding-top: 2px; /* ICON INSIDE BUTTON MORE INTO CENTER */
+}
+
+.button-startpage:focus-visible, .button-startpage.active {
+    border-color: transparent; /* REMOVING BORDER FROM ACTIVE */
+    background-color: var(--colorBg);
+}
+
+.startpage .startpage-navigation .startpage-navigation-group:first-of-type { /* ADJUSTING FIRST GROUP IN NAV BAR */
+    margin-top: 5px;
+    margin-bottom: 5px;
+    gap: 5px;
+}
+
+.startpage .startpage-navigation .startpage-navigation-group:nth-of-type(2) { /* ADJUSTING SECOND GROUP IN NAV BAR PART 1 */
+    margin: 5px;
+    gap: 5px;
+}
+
+.startpage .startpage-navigation .startpage-navigation-group:nth-of-type(2) .button-startpage { /* ADJUSTING SECOND GROUP IN NAV BAR PART 2 */
+    max-width: 34px;
+}
+
+.sdwrapper .iconmenu-container.SearchField { /* ADJUSTING THE DESIGN OF SEARCH BAR PART 1 */
+    background-color:  color-mix(in srgb, var(--colorBg), var(--lessTransparent));
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    border-radius: var(--radius);
+}
+
+.sdwrapper .button-startpage, .sdwrapper .SearchField { /* ADJUSTING THE DESIGN OF SEARCH BAR PART 2 */
+    box-shadow: none;
+}
+
+.Dashboard-Widgets .solid { /* ADJUSTING THE DESIGN OF WIDGETS PART 1 */
+    background-color:  color-mix(in srgb, var(--colorBg), var(--lessTransparent));
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+}
+
+.Dashboard-Widgets .semi-transparent { /* ADJUSTING THE DESIGN OF WIDGETS PART 2 */
+    background-color:  color-mix(in srgb, var(--colorBg), var(--lessTransparent));
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+}
+
+.widget-config { /* ADJUSTING THE DESIGN OF WIDGETS PART 3 */
+    border: none;
+    background-color: color-mix(in srgb, var(--colorBg), var(--lessTransparent));
+}
+
+.Dashboard-Widgets .TabbedView-Content { /* ADJUSTING THE DESIGN OF WIDGETS PART 4 */
+    margin: 0px 12px;
+}
+
+.Dashboard-Widgets .dashboard-widget { /* ADJUSTING THE DESIGN OF WIDGETS PART 5 */
+    box-shadow: none;
+}
+
+.TabbedView-List { /* ADJUSTING THE DESIGN OF WIDGETS PART 6 */
+    background-color: transparent;
+    border-bottom: none;
+}
+
+.TabbedView-List button { /* ADJUSTING THE DESIGN OF WIDGETS PART 7 */
+    color: var(--colorFg);
+}
+
+.TabbedView-List button.active { /* ADJUSTING THE DESIGN OF WIDGETS PART 8 */
+    background-color: var(--colorBg);
+    box-shadow: none;
+    border: none;
+    color: var(--colorFg);
+}
+
+.TabbedView-List button:hover:not(.active) { /* ADJUSTING THE DESIGN OF WIDGETS PART 9 */
+    background-color: var(--colorBg);
+    box-shadow: none;
+}
+
+.startpage input, .startpage select, .startpage textarea, .startpage .dateInput input[type=date], .startpage .dateInput input[type=time] { /* ADJUSTING THE DESIGN OF WIDGETS PART 9 */
+    background-color:  color-mix(in srgb, var(--colorBg), var(--lessTransparent));
+}
+
+#browser .Dashboard-CalendarWidget .scrollable { /* FIXING CALENDAR WIDGET */
+    padding-right: 12px;
+}
+
+.Dashboard .email-wrapper { /* FIXING EMAIL WIDGET */
+    padding-right: 0px;
+    margin: 0px 12px;
+}
+
+.Dashboard-TasksWidget .calendar-viewport { /* FIXING TASKS WIDGETS */
+    margin-right: 12px;
+}
+
+.Dashboard .top-sites-wrapper .item.semi-transparent { /* FIXING TOP SITES WIDGET PART 1 */
+    background-color: transparent;
+}
+
+.Dashboard .top-sites-wrapper .item { /* FIXING TOP SITES WIDGET PART 2 */
+    box-shadow: none;
+}
+
+.Dashboard-CurrencyWidget .TabbedView-List { /* FIXING CURRENCY WIDGET PART 1 */
+    background-color: transparent;
+}
+
+.Dashboard-CurrencyWidget .provider, .Dashboard-CurrencyWidget .external-link { /* FIXING CURRENCY WIDGET PART 2 */
+    padding-top: 10px;
+} 
+
+.SpeedDial-Add-Buttons { /* FIXING BOTTOM BUTTONS PART 1 */
+    height: 34px;
+    gap: 5px;
+    box-shadow: none;
+    border-radius: var(--radius);
+}
+
+.SpeedDial-Add-Button { /* FIXING BOTTOM BUTTONS PART 2 */
+    background-color:  color-mix(in srgb, var(--colorBg), var(--lessTransparent));
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    border-radius: var(--radius);
+}
+
+.SpeedDial-Add-Button:hover { /* FIXING BOTTOM BUTTONS PART 3 */
+    background-color:  var(--colorBg);
+}
+
+/* STATUS BAR */
+
+#browser:not(.tabs-bottom) footer#footer { /* ADJUSTING THE DESIGN OF STATUS BAR */
+    background-color:  color-mix(in srgb, var(--colorBg), var(--lessTransparent));
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    border-top: none;
+    border-radius: var(--radius);
+    margin: 0px 5px 5px 5px;
+    padding: 5px;
+}
+
+.toolbar-statusbar > .button-toolbar > button, .toolbar-statusbar .drag-area > .button-toolbar > button, .toolbar-statusbar .toolbar-extensions .button-toolbar > button, .toolbar-statusbar .page-zoom-controls .button-toolbar > button {
+    min-width: 34px;
+    height: 34px;
 }
 
 /* VIVALDI SETTINGS */
