@@ -857,11 +857,6 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
     box-shadow: none;
 }
 
-
-
-
-
-
 .startpage .startpage-navigation { /* ADJUSTING THE DESIGN OF SPEED DIAL NAVIGATION */
     min-height: 44px;
     background-color:  color-mix(in srgb, var(--colorBg), var(--lessTransparent));
@@ -1010,9 +1005,30 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
     background-color:  var(--colorBg);
 }
 
+.dashboard-list-wrapper { /* FIXING ADD WIDGET WINDOW PART 1 */
+    background-color:  color-mix(in srgb, var(--colorBg), var(--lessTransparent));
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    box-shadow: none;
+    border-radius: var(--radius);
+}
+
+.dashboard-list-wrapper .button-wrapper .add-button { /* FIXING ADD WIDGET WINDOW PART 2 */
+    box-shadow: none;
+    background-color:  color-mix(in srgb, var(--colorBg), var(--lessTransparent));
+}
+
+.startpage .close { /* ADJUSTING CLOSE BUTTON IN ADD WIDGET WINDOW */
+    background-color: transparent;
+}
+
+.startpage .close:hover { /* ADJUSTING HOVER OF CLOSE BUTTON IN ADD WIDGET WINDOW */
+    background-color: transparent;
+}
+
 /* STATUS BAR */
 
-#browser:not(.tabs-bottom) footer#footer { /* ADJUSTING THE DESIGN OF STATUS BAR */
+#browser:not(.tabs-bottom) footer#footer { /* ADJUSTING THE DESIGN OF STATUS BAR PART 1 */
     background-color:  color-mix(in srgb, var(--colorBg), var(--lessTransparent));
     backdrop-filter: var(--blur);
     -webkit-backdrop-filter: var(--blur);
@@ -1022,7 +1038,7 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
     padding: 5px;
 }
 
-.toolbar-statusbar > .button-toolbar > button, .toolbar-statusbar .drag-area > .button-toolbar > button, .toolbar-statusbar .toolbar-extensions .button-toolbar > button, .toolbar-statusbar .page-zoom-controls .button-toolbar > button {
+.toolbar-statusbar > .button-toolbar > button, .toolbar-statusbar .drag-area > .button-toolbar > button, .toolbar-statusbar .toolbar-extensions .button-toolbar > button, .toolbar-statusbar .page-zoom-controls .button-toolbar > button { /* ADJUSTING THE DESIGN OF STATUS BAR PART 2 */
     min-width: 34px;
     height: 34px;
 }
