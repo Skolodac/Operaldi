@@ -121,7 +121,7 @@ input[type=checkbox]:before, input[type=checkbox]:after { /* COLOR OF ICON IN CH
     background-color: color-mix(in srgb, var(--colorBg), var(--lessTransparent)); /* BG COLOR OF WHOLE MAINBAR */
     backdrop-filter: var(--blur);
     -webkit-backdrop-filter: var(--blur);
-    margin: 5px;
+    margin: 5px 5px 0px 5px;
     border-radius: var(--radius);
     z-index: 10;
 }
@@ -236,7 +236,7 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 
 #browser .tabbar-wrapper, #browser.tabs-top #header {
     background-color: transparent; /* BG COLOR OF TAB BAR PART 1 */
-    padding-bottom: 5px;
+    padding: 5px 0px;
 }
 
 #browser:not(.transparent-tabbar) #tabs-tabbar-container {
@@ -369,7 +369,7 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 }
 
 #panels-container {
-    padding-bottom: 5px; /* MORE SPACE UNDER SETTINGS ICON */
+    padding: 5px 0px; /* MORE SPACE UNDER SETTINGS ICON */
     min-width: 44px; /* FIXING SIDEBAR PART 1 */
 }
 
@@ -752,7 +752,7 @@ input.circular, button.circular { /* ADJUSTING RADIUS OF HOVER OF DOWNLAOD FOLDE
 
 #browser:not(.fullscreen) #webpage-stack {
     border-radius: var(--radius);
-    margin: 0px 5px 5px 5px;
+    margin: 5px;
 }
 
 /* TAB TILES MODE */
