@@ -345,6 +345,10 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
     margin-bottom: 5px;
 }
 
+#tabs-container .resize {
+    padding-bottom: 10px; /* ADDIGN SPACE ABOVE BOTTOM ICONS WHEN MANY TABS ARE OPENED */
+}
+
 #tabs-container .toolbar-tabbar-before > div > .button-toolbar > button, #tabs-container .toolbar-tabbar-after > div > .button-toolbar > button, #tabs-container .toolbar-tabbar-before > .button-toolbar > button, #tabs-container .toolbar-tabbar-after > .button-toolbar > button {
     height: 34px;
     min-width: 34px;
