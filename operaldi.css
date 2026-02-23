@@ -7,15 +7,9 @@ zkusit upravit označený taby ctrl (asi nejde?)
 
 
 
-modernizace:
-jaký další modální okna???
-restart okno
-
-
-
 moooooooooooožnááá:
 horizontal tabs?? #tabs-tabbar-container.left
-arc like pinned taby?*-/
+arc like pinned taby?
 
 */ 
 
@@ -124,6 +118,11 @@ input[type=checkbox]:before, input[type=checkbox]:after { /* COLOR OF ICON IN CH
     margin: 5px 5px 0px 5px;
     border-radius: var(--radius);
     z-index: 10;
+}
+
+.popup .mainbar { /* DIFFERENT SETTINGS OF MAINBAR FOR POPUP WINDOW */
+    margin: 5px;
+    padding: 5px 0px;
 }
 
 #browser.fullscreen .mainbar {
@@ -1447,3 +1446,7 @@ button.privacy-btn-icon { /* FIXING PRIVACY BUTTON */
     background-color:  color-mix(in srgb, var(--colorBg), var(--lessTransparent));
     border-color: transparent;
 }
+
+
+
+
