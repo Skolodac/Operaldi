@@ -340,6 +340,11 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
     color: var(--colorAccentBg);
 }
 
+.button-badge { /* ADJUSTING NOTIFICATION DOT */
+    border: none;
+    color: var(--colorAccentBg);
+}
+
 .tabs-left #tabs-container .toolbar-tabbar-after, .tabs-right #tabs-container .toolbar-tabbar-after { /* ADJUSTING ICONS UNDER TABS */
     margin-bottom: 5px;
 }
@@ -1446,7 +1451,3 @@ button.privacy-btn-icon { /* FIXING PRIVACY BUTTON */
     background-color:  color-mix(in srgb, var(--colorBg), var(--lessTransparent));
     border-color: transparent;
 }
-
-
-
-
