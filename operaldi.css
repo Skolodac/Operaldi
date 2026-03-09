@@ -156,6 +156,14 @@ input[type=checkbox]:before, input[type=checkbox]:after { /* COLOR OF ICON IN CH
     background-color: var(--colorHighlightBg); /* CHANGING BG COLOR OF HOVER IN DROPDOWN URL */
 }
 
+li.omni-clickable:not(:last-child) { /* ADDING GAP BETWEEN LINKS IN DROPDOWN URL */
+   margin-bottom: 3px;  
+}
+
+.omni-clickable:hover .displayUrl, .omni-clickable:hover .displayTitle, .omni-clickable:hover span { /* CHANGING COLOR OF HOVER LINKS IN DROPDOWN URL */
+    color: var(--colorBg);
+}
+
 .address-top .mainbar {
     border-bottom: none; /* REMOVE BORDER UNDER MAINBAR */
 }
