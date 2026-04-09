@@ -160,7 +160,7 @@ li.omni-clickable:not(:last-child) { /* ADDING GAP BETWEEN LINKS IN DROPDOWN URL
    margin-bottom: 3px;  
 }
 
-.omni-clickable:hover .displayUrl, .omni-clickable:hover .displayTitle, .omni-clickable:hover span { /* CHANGING COLOR OF HOVER LINKS IN DROPDOWN URL */
+.omni-clickable:hover .displayUrl, .omni-clickable:hover .displayTitle, .omni-clickable:hover span { /* CHANGING COLOR OF HOVER OF LINKS IN DROPDOWN URL */
     color: var(--colorBg);
 }
 
@@ -883,7 +883,7 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
     border-bottom-left-radius: var(--radius);
 }
 
-.startpage .startpage-navigation .startpage-navigation-group .button-startpage:hover { /* BORDERR RADIUS OF HOVER */
+#browser .button-startpage:hover { /* BORDER RADIUS OF HOVER */
     background-color: var(--colorBg);
     border-radius: var(--radius);
 }
@@ -893,7 +893,7 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
     padding-top: 2px; /* ICON INSIDE BUTTON MORE INTO CENTER */
 }
 
-.button-startpage:focus-visible, .button-startpage.active {
+#browser .button-startpage.active {
     border-color: transparent; /* REMOVING BORDER FROM ACTIVE */
     background-color: var(--colorBg);
 }
@@ -1458,4 +1458,82 @@ button.privacy-btn-icon { /* FIXING PRIVACY BUTTON */
 .TranslatePopup-Buttons-MenuButton { /* FIXING OPTIONS BUTTON */
     background-color:  color-mix(in srgb, var(--colorBg), var(--lessTransparent));
     border-color: transparent;
+}
+
+/* AUTOHIDE */
+
+.auto-hide-wrapper.show { /* REMOVING SHADOW OF AUTOHIDE UI */
+    box-shadow: none;
+}
+
+.auto-hide #browser:not(.transparent-tabbar) #tabs-tabbar-container { /* CHANGING DESIGN OF AUTOHIDE TAB BAR */
+    /*background-color: color-mix(in srgb, var(--colorHighlightBg), transparent 10%);*/ /* DESIGN VERSION 1 */
+    /*background-color: color-mix(in srgb, color-mix(in srgb, var(--colorBg), var(--colorHighlightBg)), transparent 10%);*/ /* DESIGN VERSION 2 */
+    background-image: linear-gradient(to bottom right, var(--colorHighlightBgDark), var(--colorHighlightBgFaded)); /* DESIGN VERSION 3 */
+    border: 1px solid var(--colorHighlightBgDark);
+}
+
+.auto-hide-wrapper.left.has-tabbar { /* ADJUSTING POSITION OF AUTOHIDE TAB BAR - TABSLEFT */
+    top: 0px;
+    left: 0px;
+    height: 100%;
+}
+
+.auto-hide-wrapper.right.has-tabbar { /* ADJUSTING POSITION OF AUTOHIDE TAB BAR - TABSRIGHT */
+    top: 0px;
+    right: 0px;
+    height: 100%;
+}
+
+.auto-hide .mainbar { /* CHANGING DESIGN OF AUTOHIDE MAINBAR */
+    /*background-color: color-mix(in srgb, var(--colorHighlightBg), transparent 10%);*/ /* DESIGN VERSION 1 */
+    /*background-color: color-mix(in srgb, color-mix(in srgb, var(--colorBg), var(--colorHighlightBg)), transparent 10%);*/ /* DESIGN VERSION 2 */
+    background-image: linear-gradient(to right, var(--colorHighlightBgDark), var(--colorHighlightBgFaded)); /* DESIGN VERSION 3 */
+    border: 1px solid var(--colorHighlightBgDark);
+}
+
+.auto-hide-wrapper.top { /* ADJUSTING POSITION OF AUTOHIDE MAINBAR */
+    top: 0px;
+    left: 0px;
+    width: 100%;
+}
+
+.auto-hide .auto-hide-wrapper.top > div:only-child, .auto-hide .auto-hide-wrapper.bottom > div:only-child, .auto-hide .auto-hide-wrapper.top > div:last-child, .auto-hide .auto-hide-wrapper.bottom > div:last-child { /* ADJUSTING BORDER RADIUS OF AUTOHIDE MAINBAR PART 1 */
+    border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
+}
+
+.auto-hide .auto-hide-wrapper.top > div:only-child, .auto-hide .auto-hide-wrapper.bottom > div:only-child, .auto-hide .auto-hide-wrapper.top > div:first-child, .auto-hide .auto-hide-wrapper.bottom > div:first-child { /* ADJUSTING BORDER RADIUS OF AUTOHIDE MAINBAR PART 2 */
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+}
+
+.auto-hide .density-on #switch { /* CHANGING DESIGN OF AUTOHIDE SIDEBAR */
+    /*background-color: color-mix(in srgb, var(--colorHighlightBg), transparent 10%);*/ /* DESIGN VERSION 1 */
+    /*background-color: color-mix(in srgb, color-mix(in srgb, var(--colorBg), var(--colorHighlightBg)), transparent 10%);*/ /* DESIGN VERSION 2 */
+    background-image: linear-gradient(to bottom left, var(--colorHighlightBgDark), var(--colorHighlightBgFaded)); /* DESIGN VERSION 3 */
+    border: 1px solid var(--colorHighlightBgDark);
+}
+
+.auto-hide-wrapper.right:not(.has-tabbar) { /* ADJUSTING POSITION OF AUTOHIDE SIDEBAR - TABSLEFT */
+    top: 0px;
+    right: 5px;
+    height: 100%;
+}
+
+.auto-hide-wrapper.left:not(.has-tabbar) { /* ADJUSTING POSITION OF AUTOHIDE SIDEBAR - TABSRIGHT */
+    top: 0px;
+    left: 5px;
+    height: 100%;
+}
+
+.auto-hide-wrapper .toolbar-statusbar { /* CHANGING DESIGN OF AUTOHIDE STATUS BAR */
+    background-image: linear-gradient(to right, var(--colorHighlightBgDark), var(--colorHighlightBgFaded));
+    border: 1px solid var(--colorHighlightBgDark);
+}
+
+.auto-hide-wrapper.bottom { /* ADJUSTING POSITION OF AUTOHIDE STATUS BAR */
+    bottom: 5px;
+    left: 5px;
+    width: calc(100% - (5px * 2));
 }
