@@ -1469,7 +1469,7 @@ button.privacy-btn-icon { /* FIXING PRIVACY BUTTON */
 .auto-hide #browser:not(.transparent-tabbar) #tabs-tabbar-container { /* CHANGING DESIGN OF AUTOHIDE TAB BAR */
     /*background-color: color-mix(in srgb, var(--colorHighlightBg), transparent 10%);*/ /* DESIGN VERSION 1 */
     /*background-color: color-mix(in srgb, color-mix(in srgb, var(--colorBg), var(--colorHighlightBg)), transparent 10%);*/ /* DESIGN VERSION 2 */
-    background-image: linear-gradient(to bottom right, var(--colorHighlightBgDark), var(--colorHighlightBgFaded)); /* DESIGN VERSION 3 */
+    background-image: linear-gradient(to bottom, var(--colorHighlightBgDark), var(--colorHighlightBgFaded)); /* DESIGN VERSION 3 */
     border: 1px solid var(--colorHighlightBgDark);
 }
 
