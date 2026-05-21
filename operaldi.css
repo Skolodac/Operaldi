@@ -1,7 +1,7 @@
 /* TODO
 
 opravit:
-drag tile vypadá divně když je scrollbar
+TAB TILES
 zkusit barvu skupiny nastavit když tam neni nic nastavený
 zkusit upravit označený taby ctrl (asi nejde?)
 
@@ -309,7 +309,7 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
     background-color: var(--colorBg);
 }
 
-.color-behind-tabs-on .tab-wrapper:hover .tab:not(.active) { /* HOVER OF TABS PART 2 */
+.color-behind-tabs-on.ui-transparent-tabs .tab-wrapper:hover .tab:not(.active) { /* HOVER OF TABS PART 2 */
     background-color: transparent;
 }
 
@@ -1549,3 +1549,6 @@ button.privacy-btn-icon { /* FIXING PRIVACY BUTTON */
     left: 5px;
     width: calc(100% - (5px * 2));
 }
+
+
+
