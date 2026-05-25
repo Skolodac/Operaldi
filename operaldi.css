@@ -1,7 +1,6 @@
 /* TODO
 
 opravit:
-TAB TILES
 zkusit barvu skupiny nastavit když tam neni nic nastavený
 zkusit upravit označený taby ctrl (asi nejde?)
 
@@ -224,7 +223,6 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 
 .color-behind-tabs-on #tabs-tabbar-container .toolbar:not(.toolbar-small) > .button-toolbar, .color-behind-tabs-on #tabs-tabbar-container .toolbar:not(.toolbar-small) > div > .button-toolbar, .color-behind-tabs-on #tabs-tabbar-container .toolbar:not(.toolbar-small) > .button-toolbar:hover, .color-behind-tabs-on #tabs-tabbar-container .toolbar:not(.toolbar-small) > div > .button-toolbar:hover {
     color: var(--colorFg);
-    margin-top: 6px;
 } /* ADJUSTING WORKSPACE BUTTON */
 
 .tabs-left .button-toolbar.workspace-popup.tabbar-workspace-button, .tabs-right .button-toolbar.workspace-popup.tabbar-workspace-button {
@@ -789,36 +787,42 @@ background-color: transparent;
     -webkit-backdrop-filter: var(--blur);
 }
 
-#browser.density-on:not(.fullscreen, .is-settingspage, .first-start):not(.narrow-tiling) #webpage-stack .webpageview.tiled.visible:not(.internal):after, #browser.density-on.maximized:not(.mac, .is-settingspage, .first-start):not(.narrow-tiling) #webpage-stack .webpageview.tiled.visible:not(.internal):after {
-    background-color: transparent; /* TRYING TO FIX TAB TILES 8.0 */
-}
-
 #browser:not(.inner, .narrow-tiling):not(.unified-ui, .unified-ui-transparent) #webpage-stack > .tiled.visible {
-    padding: 0px; /* REMOVING PADDING OF TAB TILES */
+    padding: 2px;
 }
 
-#browser .tile:has(> .tiled.webpageview) { /* REMOVED DEFAULT BEHAVIOUR */
-  border: 0 solid transparent;
+:not(.narrow-tiling)#browser .tiled:not(.webpageview) {
+    gap: 9px; /* ADJUSTING THE GAP BETWEEN TILES */
 }
 
-#browser .tiled:not(.webpageview) { /* INSTEAD OF DEFAULT BEHAVIOR IS GAP */
-  gap: 9px;
+.isblurred#browser:not(.narrow-tiling) .tile:has(> .tiled.active.visible):after {
+    outline-color: var(--colorErrorBg); /* COLOR OF BORDER OF ACTIVE TAB TILE WHEN BROWSER IS NOT FOCUSED */
 }
 
-#browser:not(.inner, .narrow-tiling) #webpage-stack > .tiled.visible {
-    box-shadow: inset 0 0 0 var(--n6) transparent; /* REMOVING SOME WEIRD SHADOW */
+.isblurred#browser:not(.narrow-tiling) .tile:has(> .tiled.active.visible) .webpageview { /* REMOVING WEIRD CORNER OF ACTIVE TAB TILE WHEN BROWSER IS NOT FOCUSED */
+    border-radius: var(--radius) !important;
+    overflow: hidden !important;
 }
 
-.hasfocus .webpageview.tiled.active {
-    box-shadow: 0 0 0 2px var(--colorAccentBg); /* CHANGING COLOR OF BORDER OF ACTIVE WHEN BROWSER IS FOCUSED */
+.hasfocus#browser:not(.narrow-tiling) .tile:has(> .tiled.active.visible):after {
+    outline-color: var(--colorErrorBg); /* COLOR OF BORDER OF ACTIVE TAB TILE WHEN BROWSER IS FOCUSED */
 }
 
-.isblurred .webpageview.tiled.active {
-    box-shadow: 0 0 0 2px var(--colorAccentBg); /* CHANGING COLOR OF BORDER OF ACTIVE WHEN BROWSER ISNT FOCUSED */
+.hasfocus#browser:not(.narrow-tiling) .tile:has(> .tiled.active.visible) .webpageview { /* REMOVING WEIRD CORNER OF ACTIVE TAB TILE WHEN BROWSER IS FOCUSED */
+    border-radius: var(--radius) !important;
+    overflow: hidden !important;
 }
 
-.webpageview.tiled:not(.active) {
-    box-shadow: 0 0 0 2px color-mix(in srgb, var(--colorBg), var(--lessTransparent)); /* CHANGING COLOR OF BORDER OF NON ACTIVE */
+.isblurred#browser:not(.narrow-tiling) .tile:has(> .webpageview.tiled.visible:not(.active)) {
+    box-shadow: 0 0 0 2px var(--colorBg); /* COLOR OF BORDER OF NONACTIVE TAB TILE WHEN BROWSER IS NOT FOCUSED */
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.hasfocus#browser:not(.narrow-tiling) .tile:has(> .webpageview.tiled.visible:not(.active)) {
+    box-shadow: 0 0 0 2px var(--colorBg); /* COLOR OF BORDER OF NONACTIVE TAB TILE WHEN BROWSER IS FOCUSED */
+    border-radius: var(--radius);
+    overflow: hidden;
 }
 
 /* SPEED DIAL */
@@ -1549,6 +1553,5 @@ button.privacy-btn-icon { /* FIXING PRIVACY BUTTON */
     left: 5px;
     width: calc(100% - (5px * 2));
 }
-
 
 
