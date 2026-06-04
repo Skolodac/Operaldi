@@ -372,7 +372,11 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
     gap: 6px; /* ADJUSTING GAP BETWEEN ICONS */
 }
 
-.tabs-left #tabs-tabbar-container .button-toolbar.newtab { /* REMOVING STRETCH WIDTH FROM NEW TAB ICON */
+.tabs-left #tabs-tabbar-container .button-toolbar.newtab { /* REMOVING STRETCH WIDTH FROM NEW TAB ICON - TABSLEFT */
+    width: auto;
+}
+
+.tabs-right #tabs-tabbar-container .button-toolbar.newtab { /* REMOVING STRETCH WIDTH FROM NEW TAB ICON - TABSRIGHT */
     width: auto;
 }
 
@@ -495,19 +499,12 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
     opacity: 0;
 }
 
-/*
-#panels-container.right:not(.icons).overlay .panel-group {
-    box-shadow: none;  REMOVING LEFT SHADOW - ASI NENI POTREBA
-} */
-
 #panels-container.overlay .panel-group {
     background-color: transparent;  /* TRANSPARENT BG WHEN OPENED WEB APP */
 }
 
 #panels-container.right #panels .webpanel-stack .webpanel .webpanel-content { /* ADJUSTING WEB APP - TABSLEFT */
     margin-right: 7px;
-    /* border-bottom-right-radius: var(--radius); - ASI NENI POTREBA
-    border-top-right-radius: var(--radius); */
 }
 
 #panels-container.left #panels .webpanel-stack .webpanel .webpanel-content { /* ADJUSTING WEB APP - TABSRIGHT */
@@ -743,23 +740,35 @@ input.circular, button.circular { /* ADJUSTING RADIUS OF HOVER OF DOWNLAOD FOLDE
     display: none; /* REMOVING HR BETWEEN BUTTONS */
 }
 
-/* ADD WEB PANEL PANEL */
+/* CUSTOMIZE YOUR SIDEBAR */
 
-.addwebpanelcallout input { /* FIXING BG COLOR OF INPUT */
+.CustomizePanelPopup { /* ADJUSTING DESIGN OF PANEL */
+    top: 5px;
+    bottom: 5px;
     background-color: color-mix(in srgb, var(--colorBg), var(--lessTransparent));
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
 }
 
-.addwebpanelcallout .webpanel-suggestion { /* BG COLOR OF SUGGESTED WEB APPS */
+.right .CustomizePanelPopup { /* FIXING SPACE BETWEEN PANEL AND CUSTOMIZE YOUR SIDEBAR - TABSLEFT */
+    right: calc(var(--controlsWidth) + 8px);
+}
+
+.left .CustomizePanelPopup { /* FIXING SPACE BETWEEN PANEL AND CUSTOMIZE YOUR SIDEBAR - TABSRIGHT */
+    left: calc(var(--controlsWidth) + 8px);
+}
+
+.CustomizePanelPopup input { /* ADJUSTING COLOR OF SEARCH BAR */
     background-color:  color-mix(in srgb, var(--colorBg), var(--lessTransparent));
 }
 
-.addwebpanelcallout button { /* REMOVING BORDER OF SUGGESTED WEB APPS */
-    border-color: transparent;
-}
-
-.addwebpanelcallout .FormButton { /* FIXING BG COLOR OF CUSTOMIZE PANEL... */
+.CustomizePanelPopup .FormButton { /* ADJUSTING COLOR OF BUTTON PART 1 */
+    background-color:  color-mix(in srgb, var(--colorBg), var(--lessTransparent));
     background-image: none;
-    background-color:  color-mix(in srgb, var(--colorBg), var(--lessTransparent));
+}
+
+.CustomizePanelPopup button { /* ADJUSTING COLOR OF BUTTON PART 2 */
+    border-color: transparent;
 }
 
 /* INNER ROUND BORDERS */
@@ -839,6 +848,10 @@ background-color: transparent;
     background-color:  color-mix(in srgb, var(--colorBg), var(--lessTransparent));
     backdrop-filter: var(--blur);
     -webkit-backdrop-filter: var(--blur);
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    margin-right: 0px;
 }
 
 .SpeedDialView-Settings .close { /* REMOVING BG AROUND CLOSE BUTTON */
@@ -890,7 +903,7 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
 }
 
 .startpage .startpage-navigation { /* ADJUSTING THE DESIGN OF SPEED DIAL NAVIGATION */
-    min-height: 44px;
+    max-height: 44px;
     background-color:  color-mix(in srgb, var(--colorBg), var(--lessTransparent));
     backdrop-filter: var(--blur);
     -webkit-backdrop-filter: var(--blur);
@@ -899,14 +912,17 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
     border-bottom-left-radius: var(--radius);
 }
 
+#browser .button-startpage { /* ADJUSTING HEIGHT OF ICONS IN NAVBAR */
+    min-height: 34px;
+}
+
 #browser .button-startpage:hover { /* BORDER RADIUS OF HOVER */
     background-color: var(--colorBg);
     border-radius: var(--radius);
 }
 
 .startpage .startpage-navigation .startpage-navigation-group .button-startpage {
-    border-radius: 8px; /* BORDER RADIUS OF ACTIVE */
-    padding-top: 2px; /* ICON INSIDE BUTTON MORE INTO CENTER */
+    border-radius: var(--radius); /* BORDER RADIUS OF ACTIVE */
 }
 
 #browser .button-startpage.active {
@@ -915,8 +931,6 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
 }
 
 .startpage .startpage-navigation .startpage-navigation-group:first-of-type { /* ADJUSTING FIRST GROUP IN NAV BAR */
-    margin-top: 5px;
-    margin-bottom: 5px;
     gap: 5px;
 }
 
@@ -925,8 +939,9 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
     gap: 5px;
 }
 
-.startpage .startpage-navigation .startpage-navigation-group:nth-of-type(2) .button-startpage { /* ADJUSTING SECOND GROUP IN NAV BAR PART 2 */
+#browser .startpage-navigation-group:nth-of-type(2) .button-startpage { /* ADJUSTING SECOND GROUP IN NAV BAR PART 2 */
     max-width: 34px;
+    padding: 3px;
 }
 
 .sdwrapper .iconmenu-container.SearchField { /* ADJUSTING THE DESIGN OF SEARCH BAR PART 1 */
@@ -1553,5 +1568,3 @@ button.privacy-btn-icon { /* FIXING PRIVACY BUTTON */
     left: 5px;
     width: calc(100% - (5px * 2));
 }
-
-
