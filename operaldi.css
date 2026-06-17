@@ -1493,6 +1493,11 @@ button.privacy-btn-icon { /* FIXING PRIVACY BUTTON */
 
 /* AUTOHIDE */
 
+.auto-hide { /* REMOVING BLACK BORDERS OF BROWSER WHEN IN AUTOHIDE MODE */
+    grid-template-columns: 0px [content] 1fr 0px;
+    grid-template-rows: 0px [content] 1fr 0px;
+}
+
 .auto-hide-wrapper.show { /* REMOVING SHADOW OF AUTOHIDE UI */
     box-shadow: none;
 }
