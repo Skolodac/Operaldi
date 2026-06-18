@@ -41,12 +41,13 @@ Configuration steps:
   9) Panel > Panel Options > check Floating Panel
   10) Bookmarks > BOOKMARK BAR > uncheck Show Bookmark Bar
   11) Rightclick tab stacking > Edit... > Choose any color to use design from CSS (only if you are using tab stacking), repeat for every tab stacking
-  12) Rightclick tab bar > Customize Toolbar... > Move toolbar buttons according to screenshot (optional):
+  12) Rightclick web app > Floating Panel > uncheck This panel, repeat for every web app you are using
+  13) Rightclick tab bar > Customize Toolbar... > Move toolbar buttons according to screenshot (optional):
 
   <img width="1920" height="1032" alt="image" src="https://github.com/user-attachments/assets/2b7d58e1-7348-4a50-8cd5-356bba34269d" />
 
-  13) Restart Vivaldi
-  14) Enjoy your new CSS
+  14) Restart Vivaldi
+  15) Enjoy your new CSS
 
 My recommendations:
 
