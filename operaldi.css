@@ -487,6 +487,10 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
     margin-left: 5px;
 }
 
+#browser:not(.tabs-right) .inner:has(> #panels-container.right.expanded), #browser:not(.tabs-left) .inner:has(> #panels-container.left.expanded) {
+    gap: 0px; /* REMOVING SPACE NEXT TO WEBVIEW CONTAINER WHEN WEB APP PANEL IS OPENED */
+}
+
 .panel > header h1 { /* REMOVING TITLE OF PANELS */
     display: none;
 }
@@ -1110,7 +1114,7 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
 /* WORKSPACES WINDOW + SOME ADJUSTING FOR PAGE TILING WINDOW */
 
 .button-popup { /* BG OF WORKSPACE WINDOW PART 1 */
-    background-color:  color-mix(in srgb, color-mix(in srgb, var(--colorBg), var(--colorHighlightBg)), var(--lessTransparent));
+    background-color:  color-mix(in srgb, color-mix(in srgb, var(--colorBg), var(--colorHighlightBg)), var(--lessTransparent)); /* BG COLOR OF ALL WINDOW POPUPS */
     backdrop-filter: var(--blur);
     -webkit-backdrop-filter: var(--blur);
     /* width: 194px; */
