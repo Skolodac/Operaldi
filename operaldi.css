@@ -1,16 +1,16 @@
 /* TODO
 
 opravit:
-zkusit barvu skupiny nastavit když tam neni nic nastavený
 zkusit upravit označený taby ctrl (asi nejde?)
-
+float web app panel
+restart window
 
 
 moooooooooooožnááá:
-horizontal tabs?? #tabs-tabbar-container.left
+horizontal tabs?? #tabs-tabbar-container.left (asi url bar v jednom řádku?)
 arc like pinned taby?
 
-*/ 
+*/
 
 :root {
     --transparent: transparent 50%; /* TRANSPARENCY OF BROWSER - 50% */
@@ -216,11 +216,19 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
     border: none;
 }
 
+.BookmarkButton {
+    max-width: 22px; /* SETTING MAX WIDTH OF BOOKMARK BG OF ICON WHEN SELECTED */
+}
+
 .BookmarkButton:hover { /* HOVER OF BOOKMARK BUTTON IN URL */
     border-color: transparent;
 }
 
 /* WORKSPACES */
+
+.tabs-left #tabs-tabbar-container .toolbar-tabbar-before, .tabs-left #tabs-tabbar-container .toolbar-tabbar-after, .tabs-right #tabs-tabbar-container .toolbar-tabbar-before, .tabs-right #tabs-tabbar-container .toolbar-tabbar-after { 
+    padding: 0px 0px 3px 0px; /* ADJUSTING PADDING OF WORKSPACE SWITCHER */
+}
 
 .color-behind-tabs-on #tabs-tabbar-container .toolbar:not(.toolbar-small) > .button-toolbar, .color-behind-tabs-on #tabs-tabbar-container .toolbar:not(.toolbar-small) > div > .button-toolbar, .color-behind-tabs-on #tabs-tabbar-container .toolbar:not(.toolbar-small) > .button-toolbar:hover, .color-behind-tabs-on #tabs-tabbar-container .toolbar:not(.toolbar-small) > div > .button-toolbar:hover {
     color: var(--colorFg);
@@ -235,7 +243,7 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 }
 
 .tabs-left #tabs-container:has(.tab-strip.overflow) .toolbar-tabbar-before, .tabs-left #tabs-container:has(.tab-strip.overflow) .toolbar-tabbar-after, .tabs-right #tabs-container:has(.tab-strip.overflow) .toolbar-tabbar-before, .tabs-right #tabs-container:has(.tab-strip.overflow) .toolbar-tabbar-after {
-    padding: 0px 0px 3px 6px; /* FIXING SPACE WHEN MANY TABS */
+    /*padding: 0px 0px 3px 6px;*/ /* FIXING SPACE WHEN MANY TABS - 8.1 */
 }
 
 /* TABS */
@@ -293,11 +301,11 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 }
 
 #tabs-container.left:has(.tab-strip.overflow), #tabs-container.right:has(.tab-strip.overflow) {
-    padding-right: 6px; /* FIXING SPACE NEXT TO TAB WHEN MANY TABS */ 
+    /*padding-right: 6px;*/ /* FIXING SPACE NEXT TO TAB WHEN MANY TABS - 8.1*/ 
 }
 
 #tabs-tabbar-container {
-    padding: 0px;  /* ADDING SPACE NEXT TO TABS */
+    padding: 5px;  /* ADDING SPACE NEXT TO TABS */
 }
 
 #browser.color-behind-tabs-on .tab.active.active { /* BG OF ACTIVE TAB */
@@ -320,29 +328,33 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
     filter: none !important; /* HIDE FAVICON WHITE BORDER */
 }
 
-#browser .tab-position.colored .tab:not(.active) {
+#browser .tab-position:not(.colored) .tab:not(.active).tab-in-accordion, .tab-position:not(.colored) .tab-accordion {
     background-color: color-mix(in srgb, var(--colorBg), var(--transparent));  /* BG COLOR OF TAB GROUP  */
     color: var(--colorFg);
 }
 
-#browser .tab-position.colored.accordion-toggle-arrow:hover, #browser .tab-position.colored .tab:not(.active):hover {
+#browser .tab-position.accordion-toggle-arrow:hover, #browser .tab-position .tab:not(.active):hover {
     background-color: var(--colorBg);  /* BG COLOR OF HOVER TAB IN GROUP */ 
 }
 
-#browser .tab-position.colored.accordion-toggle-arrow, #browser .tab-position.colored .tab.active {
+#browser .tab-position.accordion-toggle-arrow, #browser .tab-position .tab.active  {
     background-color: var(--colorBg);  /* BG COLOR OF ACTIVE TAB IN GROUP */ 
 } 
 
-#browser .tab-position.colored.accordion-toggle-arrow { /* ARROW SETTINGS */
+#browser .tab-position.accordion-toggle-arrow { /* ARROW SETTINGS */
     background-color: color-mix(in srgb, var(--colorBg), var(--transparent));
     color: var(--colorFg);
 }
 
-#browser .tab-position.colored .tab:not(.marked) + svg .stack-frame {
+#browser.maximized:not(.mac).tabs-left .tab-strip .tab-position, #browser.fullscreen.tabs-left .tab-strip .tab-position, #browser.maximized:not(.mac).tabs-right .tab-strip .tab-position, #browser.fullscreen.tabs-right .tab-strip .tab-position {
+    padding: 0px; /* REMOVED PADDING FROM ARROW BUTTON IN TAB GROUP */
+}
+
+#browser .tab-position .tab:not(.marked) + svg .stack-frame {
     stroke: transparent; /* BORDER COLOR OF TAB GROUP */
 }
 
-#browser .tab-position.colored .stack-counter {
+#browser .tab-position .stack-counter {
     background-color: var(--colorHighlightBg); /* BG COLOR OF TAB GROUP NUMBER */
     color: var(--colorAccentBg);
 }
@@ -353,8 +365,8 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 }
 
 .tabs-left #tabs-container .toolbar-tabbar-after, .tabs-right #tabs-container .toolbar-tabbar-after { /* ADJUSTING POSITION OF ICONS UNDER TABS */
-    margin-bottom: 5px;
-    margin-top: 42px;
+    /*margin-bottom: 0px; 8.1*/
+    margin-top: 41px;
 }
 
 #tabs-container .toolbar-tabbar-before > div > .button-toolbar > button, #tabs-container .toolbar-tabbar-after > div > .button-toolbar > button, #tabs-container .toolbar-tabbar-before > .button-toolbar > button, #tabs-container .toolbar-tabbar-after > .button-toolbar > button {
@@ -367,7 +379,7 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 }
 
 #tabs-tabbar-container .toolbar-tabbar-after {
-    gap: 6px; /* ADJUSTING GAP BETWEEN ICONS */
+    gap: 9px; /* ADJUSTING GAP BETWEEN ICONS */
 }
 
 .tabs-left #tabs-tabbar-container .button-toolbar.newtab { /* REMOVING STRETCH WIDTH FROM NEW TAB ICON - TABSLEFT */
@@ -537,21 +549,24 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
     box-shadow: none; /* REMOVING BORDER OF SELECTED ITEM */
 }
 
-.panel-group .sortselector.sortselector-compact, .download-popout .sortselector.sortselector-compact {
-    border: none; /* REMOVING BORDER OF SORT */
+.panel-bookmarks select, .downloads select  { /* FIXING THE DESIGN OF SORT PART 1 */
+    background-color: transparent;
 }
 
-.panel-group .sortselector.sortselector-compact .sortselector-dropdown, .download-popout .sortselector.sortselector-compact .sortselector-dropdown {
-    border-radius: var(--radius); /* BORDER RADIUS OF SORT */
-}
-
-.sortselector {
-    background-color: color-mix(in srgb, var(--colorBg), var(--transparent)); /* BG COLOR OF SORT */
-    height: calc(var(--treeViewRowHeight) - 4px); /* FIXING SORT */
-}
-
-.sortselector.sortselector-compact:hover { /* HOVER OF SORT */
+#browser .sortselector .sortselector-dropdown:hover:not(:disabled), #browser .sortselector .sortselector-dropdown:focus-visible { /* FIXING HOVER OF SORT */
     background-color: var(--colorBg);
+    border-radius: var(--radius);
+}
+
+#browser .sortselector { /* FIXING THE DESIGN OF SORT PART 2 */
+    background-color:  color-mix(in srgb, var(--colorBg), var(--transparent));
+    border-top: none;
+    border-bottom: none;
+    border-radius: var(--radius);
+}
+
+#browser .sortselector.sortselector-compact .sortselector-button { /* REMOVED BORDER NEXT TO ARROW IN SORT */
+    border-left: none;
 }
 
 .toolbar-default .button-toolbar > button:enabled { /* REMOVING BG OF BUTTONS */
@@ -845,6 +860,10 @@ background-color: transparent;
     backdrop-filter: var(--blur);
     -webkit-backdrop-filter: var(--blur);
     box-shadow: none;
+}
+
+.SpeedDialView-Settings-Button svg { /* CHANGING COLOR OF SPEED DIAL SETTINGS ICON */
+    fill: var(--colorFg);
 }
 
 .SpeedDialView-Settings { /* ADJUSTING SETTINGS OF SPEED DIAL */
@@ -1427,8 +1446,19 @@ input[type=button]:not(.circular).danger.danger:hover { /* FIXING HOVER OF DELET
     box-shadow: none;
 }
 
-.BookmarkInputField { /* REMOVING REST UNDERLINES */
+.BookmarkInputField { /* REMOVING REST UNDERLINES + NEW DESIGN FOR INPUT FIELDS */
     border-bottom: transparent;
+    background-color:  color-mix(in srgb, var(--colorBg), var(--transparent));
+    border-radius: var(--radius);
+    padding: 0px 8px;
+}
+
+.BookmarkPopup .vivaldi-tree .tree-item { /* BORDER RADIUS OF SELECTED BOOKMARK FOLDER */
+    border-radius: var(--radius);
+}
+
+.BookmarkLocationSelector-FolderList { /* ADDING SPACE NEXT TO BOOKMARK FOLDERS */
+    margin-right: 18px;
 }
 
 .BookmarkPopup .button-toolbar > button { /* FIXING NEW FOLDER BUTTON PART 1 */
@@ -1459,20 +1489,31 @@ input[type=button]:not(.circular).danger.danger:hover { /* FIXING HOVER OF DELET
     background-color: color-mix(in srgb, var(--colorBg), var(--transparent));
 }
 
-/* CONTENT BLOCKER WINDOW */
+/* SITE INFO WINDOW */
 
-#app .ContentBlocker-Header { /* REMOVING BORDER OF HEADER */
-    border-bottom: transparent;
+.SiteInfo-Header { /* REMOVING UNDERLINE PART 1 */
+    border-bottom: none;
 }
 
-button.privacy-btn-icon { /* FIXING PRIVACY BUTTON */
-    background-image: none;
-    border-color: transparent;
+.SiteInfo-Counter + .SiteInfo-Field, .SiteInfo-Blocked + .SiteInfo-Field, .SiteInfo-Field + .SiteInfo-Field {
+    border-top: none; /* REMOVING UNDERLINE PART 1 */
+}
+
+.SiteInfo-Label--Active { /* ADJUSTING COLORS OF ACTIVE BLOCKING */
+    color: var(--colorFg);
+    background-color: var(--colorBg);
+}
+
+.SiteInfo-Field li, .SiteInfo-Field label, .SiteInfo-Field h3 { /* ADDING SPACE BETWEEN ROWS */
+    padding: 2px;
+}
+
+.SiteInfo-Label { /* ADJUSTING THE HEIGHT OF LABELS */
+    padding: 6px;
+}
+
+.SiteInfo-Content input { /* ADJUSTING THE DESIGN OF BUTTON */
     background-color:  color-mix(in srgb, var(--colorBg), var(--transparent));
-}
-
-.ContentBlocker-Field input { /* FIXING MANAGE BUTTON */
-    background-color: color-mix(in srgb, var(--colorBg), var(--transparent));
 }
 
 /* TRANSLATE WINDOW FROM ULR BAR */
@@ -1495,18 +1536,54 @@ button.privacy-btn-icon { /* FIXING PRIVACY BUTTON */
     border-color: transparent;
 }
 
+/* PAGE CONFIRM INFO WINDOW */
+
+.page-confirm-info-bar { /* ADJUSTING THE DESIGN OF PAGE CONFIRM INFO WINDOW */
+    background-color:  color-mix(in srgb, var(--colorBg), var(--transparent));
+    border-bottom: none;
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+}
+
+.page-confirm-info-bar input[type=button]:not(:hover, :active) { /* ADJUSTING THE DESIGN OF RELOAD BUTTON PART 1*/
+    background-image: none;
+}
+
+.page-confirm-info-bar input { /* ADJUSTING THE DESIGN OF RELOAD BUTTON PART 2 */
+    background-color: color-mix(in srgb, var(--colorBg), var(--transparent));
+}
+
+.page-confirm-info-bar .infobar-controls svg { /* CHANGING COLOR OF CLOSE BUTTON */
+    fill: var(--colorFg);
+}
+
+.page-confirm-info-bar .infobar-controls .close { /* ADDING BG EFFECT FOR HOVER PART 1 */
+    background-color: color-mix(in srgb, var(--colorBg), var(--transparent));
+    border-radius: var(--radius);
+    margin: 0px;
+}
+
+.page-confirm-info-bar .close { /* ADDING BG EFFECT FOR HOVER PART 2 */
+    width: 28px;
+    height: 28px;
+}
+
+.page-confirm-info-bar .infobar-controls .close:hover { /* ADDING BG EFFECT FOR HOVER PART 3 */
+    background-color: var(--colorBg);
+}
+
 /* AUTOHIDE */
 
-.auto-hide { /* REMOVING BLACK BORDERS OF BROWSER WHEN IN AUTOHIDE MODE */
-    grid-template-columns: 0px [content] 1fr 0px;
-    grid-template-rows: 0px [content] 1fr 0px;
+#browser.auto-hide:not(.unified-ui) { /* REMOVING BORDER RADIUS CORNERS WHEN IN AUTOHIDE MODE */
+    border: none;
+    border-radius: 0px;
 }
 
 .auto-hide-wrapper.show { /* REMOVING SHADOW OF AUTOHIDE UI */
     box-shadow: none;
 }
 
-.auto-hide #browser:not(.transparent-tabbar) #tabs-tabbar-container { /* CHANGING DESIGN OF AUTOHIDE TAB BAR */
+.auto-hide#browser:not(.transparent-tabbar) #tabs-tabbar-container { /* CHANGING DESIGN OF AUTOHIDE TAB BAR */
     /*background-color: color-mix(in srgb, var(--colorHighlightBg), var(--lessTransparent));*/ /* DESIGN VERSION 1 */
     background-color: color-mix(in srgb, color-mix(in srgb, var(--colorBg), var(--colorHighlightBg)), var(--lessTransparent)); /* DESIGN VERSION 2 */
     /*background-image: linear-gradient(to bottom, var(--colorHighlightBgDark), var(--colorHighlightBgFaded));*/ /* DESIGN VERSION 3 */
@@ -1548,7 +1625,7 @@ button.privacy-btn-icon { /* FIXING PRIVACY BUTTON */
     border-top-right-radius: var(--radius);
 }
 
-.auto-hide .density-on #switch { /* CHANGING DESIGN OF AUTOHIDE SIDEBAR */
+.auto-hide.density-on #switch { /* CHANGING DESIGN OF AUTOHIDE SIDEBAR */
     /*background-color: color-mix(in srgb, var(--colorHighlightBg), var(--lessTransparent));*/ /* DESIGN VERSION 1 */
     background-color: color-mix(in srgb, color-mix(in srgb, var(--colorBg), var(--colorHighlightBg)), var(--lessTransparent)); /* DESIGN VERSION 2 */
     /*background-image: linear-gradient(to bottom, var(--colorHighlightBgDark), var(--colorHighlightBgFaded));*/ /* DESIGN VERSION 3 */
@@ -1584,3 +1661,7 @@ button.privacy-btn-icon { /* FIXING PRIVACY BUTTON */
 .auto-hide .panel-group { /* ADJUSTING BG COLOR OF FLOATING WEB APPS WHEN AUTOHIDE IS ACTIVE */
     background-color: color-mix(in srgb, color-mix(in srgb, var(--colorBg), var(--colorHighlightBg)), var(--lessTransparent));
 }
+
+
+
+
