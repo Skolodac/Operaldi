@@ -20,7 +20,7 @@ Configuration steps:
 
   Colors:
   
- <img width="634" height="357" alt="image" src="https://github.com/user-attachments/assets/6e43bab9-66b0-41e2-9572-531e162892be" />
+ <img width="634" height="357" alt="image" src="https://github.com/user-attachments/assets/eebc1828-90ac-4c75-b22a-6186d4b51543" />
   
   Background (my recommendations):
   
@@ -40,7 +40,7 @@ Configuration steps:
   8) Tabs > WORKSPACES > check Enable Workspaces and Show Workspaces in Tab Bar
   9) Panel > Panel Options > check Floating Panel
   10) Bookmarks > BOOKMARK BAR > uncheck Show Bookmark Bar
-  11) Rightclick tab stacking > Edit... > Choose any color to use design from CSS (only if you are using tab stacking), repeat for every tab stacking
+  11) Rightclick tab stacking > Edit... > Choose any color to use design from CSS (only if you are using tab stacking), repeat for every tab stacking (optional)
   12) Rightclick web app > Floating Panel > uncheck This panel, repeat for every web app you are using
   13) Rightclick tab bar > Customize Toolbar... > Move toolbar buttons according to screenshot (optional):
 
