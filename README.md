@@ -40,7 +40,7 @@ Configuration steps:
   8) Tabs > WORKSPACES > check Enable Workspaces and Show Workspaces in Tab Bar
   9) Panel > Panel Options > check Floating Panel
   10) Bookmarks > BOOKMARK BAR > uncheck Show Bookmark Bar
-  11) Rightclick tab stacking > Edit... > Choose any color to use design from CSS (only if you are using tab stacking), repeat for every tab stacking (optional)
+  11) Rightclick tab stacking > Edit... > Choose "No color" to use design from CSS or any color if you want colorful tab stacking, repeat for every tab stacking (optional)
   12) Rightclick web app > Floating Panel > uncheck This panel, repeat for every web app you are using
   13) Rightclick tab bar > Customize Toolbar... > Move toolbar buttons according to screenshot (optional):
 
