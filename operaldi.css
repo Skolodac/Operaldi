@@ -333,11 +333,11 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
     color: var(--colorFg);
 }
 
-#browser .tab-position.accordion-toggle-arrow:hover, #browser .tab-position .tab:not(.active):hover {
+#browser .tab-position:not(.colored).accordion-toggle-arrow:hover, #browser .tab-position:not(.colored) .tab:not(.active):hover {
     background-color: var(--colorBg);  /* BG COLOR OF HOVER TAB IN GROUP */ 
 }
 
-#browser .tab-position.accordion-toggle-arrow, #browser .tab-position .tab.active  {
+#browser .tab-position.accordion-toggle-arrow, #browser .tab-position:not(.colored) .tab.active  {
     background-color: var(--colorBg);  /* BG COLOR OF ACTIVE TAB IN GROUP */ 
 } 
 
@@ -1116,7 +1116,11 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
 /* VIVALDI SETTINGS */
 
 .vivaldi-settings .settings-content {
-    background-color: color-mix(in srgb, color-mix(in srgb, var(--colorBg), var(--colorHighlightBg)), var(--lessTransparent)); /* VIVALDI SETTINGS WERENT READABLE WITH COLORBG */
+    background-color: color-mix(in srgb, color-mix(in srgb, var(--colorBg), var(--colorHighlightBg)), var(--lessTransparent)); /* VIVALDI SETTINGS WERENT READABLE WITH COLORBG PART 1 */
+}
+
+.ThemeEditorColors {
+    background-color: var(--colorHighlightBg); /* VIVALDI SETTINGS WERENT READABLE WITH COLORBG PART 2 */
 }
 
 /* CTRL+F */
@@ -1572,6 +1576,12 @@ input[type=button]:not(.circular).danger.danger:hover { /* FIXING HOVER OF DELET
     background-color: var(--colorBg);
 }
 
+/* RESTART REQUIRED INFO+WINDOW */
+
+.mainbar .toolbar-mainbar.update .button-toolbar {
+    right: 57px;
+}
+
 /* AUTOHIDE */
 
 #browser.auto-hide:not(.unified-ui) { /* REMOVING BORDER RADIUS CORNERS WHEN IN AUTOHIDE MODE */
@@ -1661,7 +1671,3 @@ input[type=button]:not(.circular).danger.danger:hover { /* FIXING HOVER OF DELET
 .auto-hide .panel-group { /* ADJUSTING BG COLOR OF FLOATING WEB APPS WHEN AUTOHIDE IS ACTIVE */
     background-color: color-mix(in srgb, color-mix(in srgb, var(--colorBg), var(--colorHighlightBg)), var(--lessTransparent));
 }
-
-
-
-
