@@ -238,12 +238,8 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
     background-color: transparent; /* BG OF WORKSPACE BUTTON */
 }
 
-#tabs-tabbar-container .toolbar:not(.toolbar-small) > .button-toolbar > button:active, #tabs-tabbar-container .toolbar:not(.toolbar-small) > div > .button-toolbar > button:active, #tabs-tabbar-container .toolbar:not(.toolbar-small) > .button-toolbar:not(.toolbar-spacer, .toolbar-spacer-flexible) > button:not([disabled]):hover, #tabs-tabbar-container .toolbar:not(.toolbar-small) > div > .button-toolbar:not(.toolbar-spacer, .toolbar-spacer-flexible) > button:not([disabled]):hover {
-    background-color: var(--colorBg); /* HOVER OF WORKSPACES */
-}
-
-.tabs-left #tabs-container:has(.tab-strip.overflow) .toolbar-tabbar-before, .tabs-left #tabs-container:has(.tab-strip.overflow) .toolbar-tabbar-after, .tabs-right #tabs-container:has(.tab-strip.overflow) .toolbar-tabbar-before, .tabs-right #tabs-container:has(.tab-strip.overflow) .toolbar-tabbar-after {
-    /*padding: 0px 0px 3px 6px;*/ /* FIXING SPACE WHEN MANY TABS - 8.1 */
+.color-behind-tabs-on #tabs-tabbar-container .toolbar-tabbar-before > .button-toolbar:not(.toolbar-spacer, .toolbar-spacer-flexible) > button:not([disabled]):hover, .color-behind-tabs-on #tabs-tabbar-container .toolbar-tabbar-after > .button-toolbar:not(.toolbar-spacer, .toolbar-spacer-flexible) > button:not([disabled]):hover, .color-behind-tabs-on #tabs-tabbar-container .toolbar-tabbar-before > .button-toolbar:not(.toolbar-spacer, .toolbar-spacer-flexible) > button:not([disabled]).button-pressed, .color-behind-tabs-on #tabs-tabbar-container .toolbar-tabbar-after > .button-toolbar:not(.toolbar-spacer, .toolbar-spacer-flexible) > button:not([disabled]).button-pressed {
+    background-color: var(--colorBg); /* BG OF WORKSPACE BUTTON WHEN WORKSPACE WINDOW IS OPENED */
 }
 
 /* TABS */
@@ -298,10 +294,6 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
     ::-webkit-scrollbar {
       display: none;
     }
-}
-
-#tabs-container.left:has(.tab-strip.overflow), #tabs-container.right:has(.tab-strip.overflow) {
-    /*padding-right: 6px;*/ /* FIXING SPACE NEXT TO TAB WHEN MANY TABS - 8.1*/ 
 }
 
 #tabs-tabbar-container {
@@ -1578,8 +1570,20 @@ input[type=button]:not(.circular).danger.danger:hover { /* FIXING HOVER OF DELET
 
 /* RESTART REQUIRED INFO+WINDOW */
 
-.mainbar .toolbar-mainbar.update .button-toolbar {
+.mainbar .toolbar-mainbar.update .button-toolbar { /* CHANGE POSITION OF RESTART REQUIRED INFO */
     right: 57px;
+}
+
+.theme-dark input[type=button]:not(.circular).danger, .theme-dark input[type=submit].danger, .theme-dark input[type=color].danger, .theme-dark .FormButton.danger {
+    color: var(--colorFg); /* CHANGING COLOR OF FONT */
+}
+
+input[type=submit].danger { /* ADJUSTING DESIGN OF RESTART BUTTON */
+    background-color: color-mix(in srgb, var(--colorBg), var(--transparent));
+}
+
+input[type=submit].danger.danger:hover { /* ADJUSTING DESIGN OF HOVER OF RESTART BUTTON */
+    border-color: transparent;
 }
 
 /* AUTOHIDE */
