@@ -3,7 +3,6 @@
 opravit:
 zkusit upravit označený taby ctrl (asi nejde?)
 float web app panel
-restart window
 
 
 moooooooooooožnááá:
@@ -262,7 +261,7 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 
 #browser:not(.transparent-tabbar) #tabs-tabbar-container.right { /* BG COLOR OF TAB BAR PART 3 - TABSRIGHT */
     margin-right: 5px;
-}
+}  
 
 .color-behind-tabs-on .tab {
     color: var(--colorFg); /* FONT COLOR OF NON ACTIVE TAB */
@@ -299,6 +298,11 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 #tabs-tabbar-container {
     padding: 5px;  /* ADDING SPACE NEXT TO TABS */
 }
+
+#tabs-container.left .tab-strip, #tabs-container.right .tab-strip { /* FIXING SPACE NEXT TO TABS */
+    margin: 0;
+    max-width: calc(100% - var(--densityGap) * 0);
+}  
 
 #browser.color-behind-tabs-on .tab.active.active { /* BG OF ACTIVE TAB */
     background-color: var(--colorBg);
