@@ -6,14 +6,13 @@ float web app panel
 
 
 moooooooooooožnááá:
-horizontal tabs?? #tabs-tabbar-container.left (asi url bar v jednom řádku?)
 arc like pinned taby?
 
 */
 
 :root {
     --transparent: transparent 50%; /* TRANSPARENCY OF BROWSER - 50% */
-    --lessTransparent: transparent 10%; /* TRANSPARENCY OF BROWSER - 50% */
+    --lessTransparent: transparent 10%; /* TRANSPARENCY OF SOME PARTS OF UI - 10% */
     --blur: blur(15px); /* BLUR OF BROWSER - 15px */
 }
 
@@ -105,18 +104,17 @@ input[type=checkbox]:before, input[type=checkbox]:after { /* COLOR OF ICON IN CH
     height: 34px; /* HEIGHT OF URL BAR */
 }
 
-.density-on#browser.win.disable-titlebar .window-buttongroup {
-    height: 44px;
-    background-color: transparent;
-}
-
-.mainbar {
+#browser.address-top .mainbar {
     background-color: color-mix(in srgb, var(--colorBg), var(--transparent)); /* BG COLOR OF WHOLE MAINBAR */
     backdrop-filter: var(--blur);
     -webkit-backdrop-filter: var(--blur);
     margin: 5px 5px 0px 5px;
     border-radius: var(--radius);
     z-index: 10;
+}
+.tabs-top .toolbar-mainbar.toolbar-visible { /* PADDING OF MAINBAR - TABSTOP */
+    padding: 5px;
+    margin: 0px 3px;
 }
 
 .popup .mainbar { /* DIFFERENT SETTINGS OF MAINBAR FOR POPUP WINDOW */
@@ -133,8 +131,20 @@ input[type=checkbox]:before, input[type=checkbox]:after { /* COLOR OF ICON IN CH
     background-color: transparent;
 }
 
+.UrlBar-AddressField { /* ADJUSTING POSITION OF URL BAR */
+    margin: 0px;
+}
+
+#browser.color-behind-tabs-on:not(.transparent-tabbar) #tabs-tabbar-container .UrlBar-AddressField:not(:focus-within) {
+    background: transparent; /* BG COLOR OF URL BAR - TABSTOP */
+}
+
 .SearchField:hover, .UrlBar-AddressField:hover { /* HOVER OF SEARCHBAR */
     background-color: var(--colorBg);
+}
+
+#browser.color-behind-tabs-on:not(.transparent-tabbar) #tabs-tabbar-container .UrlBar-AddressField:not(:focus-within):hover {
+    background: var(--colorBg); /* BG COLOR OF HOVER OF URL BAR - TABSTOP */
 }
 
 .color-behind-tabs-on .SearchField:focus-within, .color-behind-tabs-on .MailSearchField-Inner:focus-within, .color-behind-tabs-on .UrlBar-AddressField:focus-within {
@@ -142,9 +152,12 @@ input[type=checkbox]:before, input[type=checkbox]:after { /* COLOR OF ICON IN CH
     background-color: var(--colorBg);
 }
 
-.UrlFragment-Wrapper--ShouldHighlight {
-    --HighlightColor: var(--colorFg); /* FONT COLOR OF www.GOOGLE.com */
-    --LowlightColor: var(--colorFg); /* FONT COLOR OF WWW.google.COM */
+.UrlFragment--Highlight {
+    color: var(--colorFg); /* FONT COLOR OF URL PART 1 */
+}
+
+.UrlBar-UrlField { /* FONT COLOR OF URL PART 2 */
+    color: var(--colorFg);
 }
 
 .OmniDropdown { 
@@ -171,12 +184,25 @@ li.omni-clickable:not(:last-child) { /* ADDING GAP BETWEEN LINKS IN DROPDOWN URL
     background-color: var(--colorBg);
 }
 
-#browser:not(.tabs-top) .vivaldi:hover, #browser:not(.tabs-top) .vivaldi:focus-visible { /* HOVER OF HAMBURGER BUTTON */
+.disable-titlebar.address-top#browser:not(.tabs-top) .vivaldi {
+    margin: 0 5px; /* FIXING POSITION OF HAMBURGER - TABSLEFT+TABSRIGHT*/
+}
+
+.vivaldi { /* FIXING POSITION OF HAMBURGER - TABSTOP */
+    height: 34px;
+    margin: 0px 6px 0px 1px;
+}
+
+#header button { /* COLOR OF HAMBURGER - TABSTOP */
+    color: var(--colorFg);
+}
+
+#browser:not(.tabs-top) .vivaldi:hover, #browser:not(.tabs-top) .vivaldi:focus-visible { /* HOVER OF HAMBURGER BUTTON - TABSLEFT+TABSRIGHT*/
     background-color: var(--colorBg);
 }
 
-.disable-titlebar.address-top#browser:not(.tabs-top) .vivaldi {
-    margin: 0 5px; /* REDUCING SPACE NEXT TO HAMBURGER */
+.color-behind-tabs-on .vivaldi:hover, .color-behind-tabs-on .vivaldi:focus-visible { /* HOVER OF HAMBURGER BUTTON - TABSTOP */
+    background-color: var(--colorBg);
 }
 
 button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB TILING ICON */
@@ -193,12 +219,29 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
     background-image: linear-gradient(var(--colorBg),var(--colorBg)); /* CHANGE COLOR WHEN ICON IS ACTIVE */
 }
 
+.density-on#browser.win.disable-titlebar .window-buttongroup { /* FIXING POSITION OF WINDOW BUTTONS - TABSLEFT+TABSRIGHT */
+    height: 44px;
+    background-color: transparent;
+}
+
+.maximized.tabs-at-edge.tabs-top:not(.popup, .horizontal-menu)#browser.win .window-buttongroup button { /* FIXING POSITION OF WINDOW BUTTONS - TABSTOP */
+    height: 44px;
+}
+
+#browser.win .window-buttongroup button { /* COLOR OF WINDOW BUTTON - TABSTOP */
+    fill: var(--colorFg);
+}
+
 #browser.win .window-buttongroup button:hover {
     background-color: var(--colorBg); /* HOVER OF WINDOW BUTTONS LIGHT THEME*/
 }
 
 .theme-dark#browser.win .window-buttongroup button:hover {
     background-color: var(--colorBg); /* HOVER OF WINDOW BUTTONS DARK THEME */
+}
+
+#browser.win .window-buttongroup button:hover {
+    fill: var(--colorFg); /* HOVER OF WINDOW BUTTON - TABSTOP */
 }
 
 #browser.win .window-buttongroup button.window-close:hover {
@@ -215,6 +258,10 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
     border: none;
 }
 
+#browser.color-behind-tabs-on:not(.transparent-tabbar) #tabs-tabbar-container .UrlBar-AddressField:not(:focus-within) .BookmarkButton:not(:hover) .bookmark-outline {
+    stroke: var(--colorFg); /* COLOR OF BOOKMARK ICON - TABSTOP */
+}
+
 .BookmarkButton {
     max-width: 22px; /* SETTING MAX WIDTH OF BOOKMARK BG OF ICON WHEN SELECTED */
 }
@@ -223,10 +270,52 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
     border-color: transparent;
 }
 
+/* BOOKMARK BAR */
+
+.bookmark-bar { /* STYLING BOOKMARK BAR PART 1 */
+    height: 34px !important;
+    margin: 5px 5px 0px 5px;
+    border-radius: var(--radius);
+    border: none;
+}
+
+.color-behind-tabs-on .bookmark-bar {
+    background-color:  color-mix(in srgb, var(--colorBg), var(--transparent)); /* STYLING BOOKMARK BAR PART 2 */
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+}
+
+.bookmark-bar .observer { /* STYLING BOOKMARK BAR PART 3 */
+    background-color: transparent;
+    padding: 5px;
+}
+
+.color-behind-tabs-on .bookmark-bar button { /* STYLING BOOKMARKS BUTTONS */
+    background-color: transparent;
+    border-radius: var(--radius);
+}
+
+.bookmark-bar .spacer { /* REMOVING SPACER IN FRONT OF BOOKMARK BUTTONS */
+    width: 0px !important;
+}
+
+.bookmark-bar button.chevron { /* ADJUSTING SIZE AND POSITION OF BOOKMARK CHEVRON */
+    padding: 4px;
+    margin-right: 5px;
+}
+
 /* WORKSPACES */
 
 .tabs-left #tabs-tabbar-container .toolbar-tabbar-before, .tabs-left #tabs-tabbar-container .toolbar-tabbar-after, .tabs-right #tabs-tabbar-container .toolbar-tabbar-before, .tabs-right #tabs-tabbar-container .toolbar-tabbar-after { 
-    padding: 0px 0px 3px 0px; /* ADJUSTING PADDING OF WORKSPACE SWITCHER */
+    padding: 0px 0px 3px 0px; /* ADJUSTING PADDING OF WORKSPACE BUTTON - TABSLEFT+TABSRIGHT */
+}
+
+#browser.win.maximized:is(.tabs-top, .tabs-bottom) .toolbar-tabbar-before > div:first-of-type {
+    padding-left: 0px; /* ADJUSTING POSITION OF WORKSPACE BUTTON - TABSTOP */
+}
+
+#browser.address-top.tabs-top #tabs-tabbar-container .toolbar-tabbar-before {
+    margin: 0px; /* ADJUSTING POSITION OF WORKSPACE BUTTON WHEN URL BAR IS ENABLED - TABSTOP */
 }
 
 .color-behind-tabs-on #tabs-tabbar-container .toolbar:not(.toolbar-small) > .button-toolbar, .color-behind-tabs-on #tabs-tabbar-container .toolbar:not(.toolbar-small) > div > .button-toolbar, .color-behind-tabs-on #tabs-tabbar-container .toolbar:not(.toolbar-small) > .button-toolbar:hover, .color-behind-tabs-on #tabs-tabbar-container .toolbar:not(.toolbar-small) > div > .button-toolbar:hover {
@@ -243,7 +332,7 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 
 /* TABS */
 
-#browser .tabbar-wrapper, #browser.tabs-top #header {
+#browser.tabs-left .tabbar-wrapper, #browser.tabs-right .tabbar-wrapper {
     background-color: transparent; /* BG COLOR OF TAB BAR PART 1 */
     padding: 5px 0px;
 }
@@ -263,8 +352,63 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
     margin-right: 5px;
 }  
 
+#header { /* POSITION OF TAB BAR - TABSTOP */
+    margin: 5px 5px 0px 5px;
+}
+
+#browser.tabs-top .tabbar-wrapper, #browser.tabs-top #header { /* FIXING BG COLOR OF TAB BAR - TABSTOP */
+    background-color: transparent;
+}
+
+.tabs-at-edge #tabs-tabbar-container.top { /* HEIGHT OF TABS CONTAINER - TABSTOP */
+    min-height: 34px;
+    padding: 5px;
+}
+
+.tabs-top.tabs-at-edge #tabs-tabbar-container #tabs-container {
+    padding-bottom: 0px; /* REMOVING PADDING UNDER TABS - TABSTOP */
+}
+
+#browser.tabs-top .tab .tab-header {
+    padding-top: 1px; /* ADJUSTING POSITION OF FAVICON IN TAB - TABSTOP */
+}
+
+#browser:not(.address-top.mail-bar-top, .unified-ui) > #header { /* REMOVING UGLY SHADOW WHEN ADDRESS BAR IS HIDDEN - TABSTOP */
+    box-shadow: none;
+}
+
+#browser:not(.theme-dark) #tabs-tabbar-container.top { /* REMOVING SHADOW - TABSTOP */
+    box-shadow: none;
+}
+
+#tabs-container .resize .tab-strip, #tabs-container .resize .tab-position, #tabs-container .resize .toolbar-tabbar {
+    margin: 0px 2px; /* ADDING SPACE NEXT TO TABS CONTAINER PART 1 - TABSTOP */
+}
+
+.tabs-top #tabs-container .resize, .tabs-bottom #tabs-container .resize {
+    margin-right: 5px; /* ADDING SPACE NEXT TO TABS CONTAINER PART 2 - TABSTOP */
+}
+
+.tabs-top.density-on .tab:not(.tab-in-accordion, .tab-accordion).pinned { /* ADJUSTING WIDTH OF PINNED TABS AND POSITION OF FAVICON - TABSTOP */
+    max-width: 34px;
+    padding-top: 1px;
+    padding-left: 1px;
+}
+
 .color-behind-tabs-on .tab {
     color: var(--colorFg); /* FONT COLOR OF NON ACTIVE TAB */
+}
+
+.tabs-top .tab:not(.tab-in-accordion, .tab-accordion) {
+    border-radius: var(--radius); /* BORDER RADIUS OF TABS - TABSTOP */
+}
+
+.tabs-top.tabs-at-edge:not(.unified-ui) .tab-position:not(.is-substack) .tab.active {
+    height: calc(var(--Height)); /* FIXING HEIGHT OF ACTIVE TAB - TABSTOP */
+}
+
+.tabs-top.density-on.tabs-at-edge .tab:not(.tab-in-accordion).active {
+    overflow: hidden; /* REMOVING OVERFLOW FROM ACTIVE TAB - TABSTOP */
 }
 
 .density-on:not(.tabs-at-edge) .tab.active:not(.tab-in-accordion, .tab-accordion) {
@@ -278,6 +422,15 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 }
 
 #browser:not(.alt-tabs) #tabs-container .tab:not(.tab-small).audio-on .favicon { /* HIDING FAVICON WHEN AUDIO IS PLAYING IN PINNED TAB */
+    transform: scale(0);
+}
+
+#browser #tabs-container .tab.tab-small.audio-on .tab-audio { /* ADJUSTING POSITION OF AUDIO ICON IN SMALL TAB - TABSTOP */
+    left: 5px;
+    top: 6px;
+}
+
+#browser:not(.alt-tabs) #tabs-container .tab.tab-small.audio-on .favicon { /* HIDING FAVICON WHEN AUDIO IS PLAYING IN SMALL TAB - TABSTOP */
     transform: scale(0);
 }
 
@@ -324,6 +477,20 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
     filter: none !important; /* HIDE FAVICON WHITE BORDER */
 }
 
+.tabs-top .tab-accordion { /* ADJUSTING BORDER RADIUS OF TAB GROUP - TABSTOP */
+    border-top-left-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+}
+
+.tabs-top .tab-in-accordion.tab-first-in-group { /* ADJUSTING BORDER RADIUS OF FIRST TAB IN TAB GROUP - TABSTOP */
+    border-top-left-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
+}
+
+.tabs-top .tab-accordion.active { /* ADJUSTING BORDER RADIUS OF FIRST TAB IN TAB GROUP IF TAB IS ACTIVE AND TAB GROUP IS CLOSED - TABSTOP */
+    border-top-left-radius: var(--radius);
+}
+
 #browser .tab-position:not(.colored) .tab:not(.active).tab-in-accordion, .tab-position:not(.colored) .tab-accordion {
     background-color: color-mix(in srgb, var(--colorBg), var(--transparent));  /* BG COLOR OF TAB GROUP  */
     color: var(--colorFg);
@@ -342,6 +509,15 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
     color: var(--colorFg);
 }
 
+#browser.tabs-top .tab-position.accordion-toggle-arrow { /* ADJUSTING ARROW POSITION - TABSTOP */
+    margin-left: 3px;
+}
+
+.tabs-top .accordion-toggle-arrow { /* ADJUSTING BORDER RADIUS OF ARROW IN TAB GROUP - TABSTOP */
+    border-top-right-radius: var(--radius);
+    border-bottom-right-radius: var(--radius);
+}
+
 #browser.maximized:not(.mac).tabs-left .tab-strip .tab-position, #browser.fullscreen.tabs-left .tab-strip .tab-position, #browser.maximized:not(.mac).tabs-right .tab-strip .tab-position, #browser.fullscreen.tabs-right .tab-strip .tab-position {
     padding: 0px; /* REMOVED PADDING FROM ARROW BUTTON IN TAB GROUP */
 }
@@ -353,6 +529,14 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 #browser .tab-position .stack-counter {
     background-color: var(--colorHighlightBg); /* BG COLOR OF TAB GROUP NUMBER */
     color: var(--colorAccentBg);
+}
+
+#browser.tabs-top .tabbar-wrapper .colored { /* BORDER RADIUS OF COLORED TAB GROUP - TABSTOP */
+    --currentRadius: var(--radius);
+}
+
+#browser.tabs-top .tab .stack-counter { /* ADJUSTING POSITION OF TAB GROUP NUMBER - TABSTOP */
+    margin-top: 3px;
 }
 
 .button-badge { /* ADJUSTING NOTIFICATION DOT */
@@ -932,7 +1116,7 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
 }
 
 #browser .button-startpage { /* ADJUSTING HEIGHT OF ICONS IN NAVBAR */
-    min-height: 34px;
+    min-height: 33px;
 }
 
 #browser .button-startpage:hover { /* BORDER RADIUS OF HOVER */
@@ -1620,7 +1804,7 @@ input[type=submit].danger.danger:hover { /* ADJUSTING DESIGN OF HOVER OF RESTART
     height: 100%;
 }
 
-.auto-hide .mainbar { /* CHANGING DESIGN OF AUTOHIDE MAINBAR */
+#browser.auto-hide .mainbar { /* CHANGING DESIGN OF AUTOHIDE MAINBAR */
     /*background-color: color-mix(in srgb, var(--colorHighlightBg), var(--lessTransparent));*/ /* DESIGN VERSION 1 */
     background-color: color-mix(in srgb, color-mix(in srgb, var(--colorBg), var(--colorHighlightBg)), var(--lessTransparent)); /* DESIGN VERSION 2 */
     /*background-image: linear-gradient(to bottom, var(--colorHighlightBgDark), var(--colorHighlightBgFaded));*/ /* DESIGN VERSION 3 */
@@ -1662,11 +1846,23 @@ input[type=submit].danger.danger:hover { /* ADJUSTING DESIGN OF HOVER OF RESTART
     height: 100%;
 }
 
+#browser.auto-hide .bookmark-bar { /* CHANGING DESIGN OF AUTOHIDE BOOKMARK BAR */
+    /*background-color: color-mix(in srgb, var(--colorHighlightBg), var(--lessTransparent));*/ /* DESIGN VERSION 1 */
+    background-color: color-mix(in srgb, color-mix(in srgb, var(--colorBg), var(--colorHighlightBg)), var(--lessTransparent)); /* DESIGN VERSION 2 */
+    /*background-image: linear-gradient(to bottom, var(--colorHighlightBgDark), var(--colorHighlightBgFaded));*/ /* DESIGN VERSION 3 */
+    /*border: 1px solid var(--colorHighlightBgDark);*/
+}
+
+.auto-hide-wrapper .bookmark-bar {
+    padding: 0px; /* ADJUSTING POSITION OF BOOKMARK ICONS IN AUTOHIDE */
+}
+
 .auto-hide-wrapper .toolbar-statusbar { /* CHANGING DESIGN OF AUTOHIDE STATUS BAR */
     /*background-image: color-mix(in srgb, color-mix(in srgb, var(--colorBg), var(--colorHighlightBg)), var(--lessTransparent));*/
     background-color: color-mix(in srgb, color-mix(in srgb, var(--colorBg), var(--colorHighlightBg)), var(--lessTransparent));
     backdrop-filter: var(--blur);
     -webkit-backdrop-filter: var(--blur);
+    padding: 5px;
     /*border: 1px solid var(--colorHighlightBgDark);*/
 }
 
@@ -1676,6 +1872,28 @@ input[type=submit].danger.danger:hover { /* ADJUSTING DESIGN OF HOVER OF RESTART
     width: calc(100% - (5px * 2));
 }
 
+#browser.win.maximized.auto-hide .toolbar-statusbar { /* POSITION OF ICONS IN AUTOHIDE STATUS BAR */
+    padding-left: 5px;
+    padding-right: 3px;
+}
+
 .auto-hide .panel-group { /* ADJUSTING BG COLOR OF FLOATING WEB APPS WHEN AUTOHIDE IS ACTIVE */
     background-color: color-mix(in srgb, color-mix(in srgb, var(--colorBg), var(--colorHighlightBg)), var(--lessTransparent));
+}
+
+#browser.tabs-top.auto-hide .tabbar-wrapper, #browser.tabs-top #header {
+    margin: 5px 5px 0px 5px; /* POSITION OF AUTOHIDE TAB BAR - TABSTOP */
+}
+
+.auto-hide#browser:not(.transparent-tabbar) #tabs-tabbar-container {
+    min-height: 34px; /* HEIGHT OF TAB CONTAINER IN AUTOHIDE - TABSTOP */
+}
+
+.tabs-top.density-on:not(.tabs-at-edge) #tabs-tabbar-container:not(:has(#tabs-subcontainer)) {
+    padding-top: 5px; /* ADJUSTING POSITION OF TABS IN AUTOHIDE - TABSTOP */
+    padding-bottom: 5px;
+}
+
+.tabs-top:not(.popup, .horizontal-menu)#browser.win .window-buttongroup button {
+    height: 44px; /* ADJUSTING HEIGHT OF WINDOW BUTTONS IN AUTOHIDE - TABSTOP */
 }
