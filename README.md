@@ -3,11 +3,17 @@ My custom CSS for Vivaldi, inspired by Opera
 
 Screenshots:
 
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/ce0b9c08-e08d-48d5-af3c-026413980a0e" />
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/06e86c16-8dcd-44a8-99c2-33612fadc7fc" />
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/a408dd53-010d-4fec-8672-e69ac7b574bc" />
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/a5fe60d9-8618-4258-8d45-e9f08e54d234" />
-<img width="500" alt="image" src="https://github.com/user-attachments/assets/bbc2e85b-9731-49d2-a54c-d65d52b957d6" />
+<img width="500" alt="image" src="screenshots/tabstop.png" />
+<img width="500" alt="image" src="screenshots/tabstop-panel.png" />
+<img width="500" alt="image" src="screenshots/tabstop-panel-urlbar.png" />
+<img width="500" alt="image" src="screenshots/tabstop-panel-urlbar-bookmarkbar.png" />
+<img width="500" alt="image" src="screenshots/tabstop-panel-urlbar-bookmarkbar-statusbar.png" />
+<img width="500" alt="image" src="screenshots/tabsleft-panel.png" />
+<img width="500" alt="image" src="screenshots/tabsleft-panel-sidebar.png" />
+<img width="500" alt="image" src="screenshots/tabsright-panel-tabtiling.png" />
+<img width="500" alt="image" src="screenshots/tabsright-panel-speeddial.png" />
+<img width="500" alt="image" src="screenshots/tabsright-panel-bookmarkbar-ctrlf.png" />
+
 
 Configuration steps:
 
@@ -39,15 +45,14 @@ Configuration steps:
   7) Tabs > Tab Stacking > Accordion (only if you are using tab stacking)
   8) Tabs > WORKSPACES > check Enable Workspaces and Show Workspaces in Tab Bar
   9) Panel > Panel Options > check Floating Panel
-  10) Bookmarks > BOOKMARK BAR > uncheck Show Bookmark Bar
-  11) Rightclick tab stacking > Edit... > Choose "No color" to use design from CSS or any color if you want colorful tab stacking, repeat for every tab stacking (optional)
-  12) Rightclick web app > Floating Panel > uncheck This panel, repeat for every web app you are using
-  13) Rightclick tab bar > Customize Toolbar... > Move toolbar buttons according to screenshot (optional):
+  10) Rightclick tab stacking > Edit... > Choose "No color" to use design from CSS or any color if you want colorful tab stacking, repeat for every tab stacking (optional)
+  11) Rightclick web app > Floating Panel > uncheck This panel, repeat for every web app you are using
+  12) Rightclick tab bar > Customize Toolbar... > Move toolbar buttons according to screenshot (optional):
 
   <img width="1920" height="1032" alt="image" src="https://github.com/user-attachments/assets/2b7d58e1-7348-4a50-8cd5-356bba34269d" />
 
-  14) Restart Vivaldi
-  15) Enjoy your new CSS
+  13) Restart Vivaldi
+  14) Enjoy your new CSS
 
 My recommendations:
 
