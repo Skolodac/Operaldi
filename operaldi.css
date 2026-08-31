@@ -4,7 +4,6 @@ opravit:
 zkusit upravit označený taby ctrl (asi nejde?)
 float web app panel
 
-
 moooooooooooožnááá:
 arc like pinned taby?
 
@@ -117,9 +116,14 @@ input[type=checkbox]:before, input[type=checkbox]:after { /* COLOR OF ICON IN CH
     margin: 0px 3px;
 }
 
+#browser:is(.popup, .is-settingspage):not(.fullscreen, .disable-titlebar) #header { /* DIFFERENT SETTINGS OF HEADER FOR POPUP WINDOW */
+    background-color:  color-mix(in srgb, var(--colorBg), var(--transparent));
+    border-radius: var(--radius);
+}
+
 .popup .mainbar { /* DIFFERENT SETTINGS OF MAINBAR FOR POPUP WINDOW */
-    margin: 5px;
-    padding: 5px 0px;
+    margin: 5px !important;
+    padding: 6px 0px 6px 2px;
 }
 
 #browser.fullscreen .mainbar {
