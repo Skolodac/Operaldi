@@ -209,6 +209,10 @@ li.omni-clickable:not(:last-child) { /* ADDING GAP BETWEEN LINKS IN DROPDOWN URL
     background-color: var(--colorBg);
 }
 
+#browser.win.maximized:not(.auto-hide, .tabs-top) .mainbar .toolbar > div:first-of-type { /* ADJUSTING POSITION OF COMPACT MODE BUTTON WHILE NOT IN AUTOHIDE MODE OR TABSTOP - TABSTOP */
+    padding-left: 0px;
+}
+
 button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB TILING ICON */
     margin-left: 3px;
     margin-right: 4px;
@@ -622,6 +626,10 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 
 #panels-container.left:not(.icons) .panel-group, #panels-container.left.icons:not(:has(.SlideBar)) {
     border-right: none; /* HIDE WEIRD BORDER IN SIDEBAR - TABSRIGHT */
+}
+
+.toolbar-vertical .toolbar-extensions:not(:empty) {
+    padding-left: 5px; /* FIXING POSITION OF EXTENSIONS IN SIDEBAR */
 }
 
 .ExtensionToggleIcon.ExtensionToggleIcon--Expanded {
@@ -1776,6 +1784,17 @@ input[type=submit].danger { /* ADJUSTING DESIGN OF RESTART BUTTON */
 
 input[type=submit].danger.danger:hover { /* ADJUSTING DESIGN OF HOVER OF RESTART BUTTON */
     border-color: transparent;
+    color: var(--colorFg);
+}
+
+/* INSTALL PWA WINDOW */
+
+.PwaInstallPopup-AppHeader .PwaInstallPopup-AppIcon {
+    background-color: transparent; /* REMOVING BG OF FAVICON */
+}
+
+.PwaInstallPopup input { /* ADJUSTING DESIGN OF BUTTONS */
+    background-color: color-mix(in srgb, var(--colorBg), var(--transparent));
 }
 
 /* AUTOHIDE */
@@ -1883,6 +1902,10 @@ input[type=submit].danger.danger:hover { /* ADJUSTING DESIGN OF HOVER OF RESTART
 
 .auto-hide .panel-group { /* ADJUSTING BG COLOR OF FLOATING WEB APPS WHEN AUTOHIDE IS ACTIVE */
     background-color: color-mix(in srgb, color-mix(in srgb, var(--colorBg), var(--colorHighlightBg)), var(--lessTransparent));
+}
+
+#browser.tabs-top.auto-hide button.vivaldi {
+    color: var(--colorFg); /* FIXING COLOR OF HAMBURGER ICON WHEN TABSTOP AND IN AUTOHIDE - TABSTOP */
 }
 
 #browser.tabs-top.auto-hide .tabbar-wrapper, #browser.tabs-top #header {
