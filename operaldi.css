@@ -7,7 +7,7 @@ float web app panel
 moooooooooooožnááá:
 arc like pinned taby?
 
-*/
+*/ 
 
 :root {
     --transparent: transparent 50%; /* TRANSPARENCY OF BROWSER - 50% */
@@ -156,13 +156,16 @@ input[type=checkbox]:before, input[type=checkbox]:after { /* COLOR OF ICON IN CH
     background-color: var(--colorBg);
 }
 
-.UrlFragment--Highlight {
-    color: var(--colorFg); /* FONT COLOR OF URL PART 1 */
+.UrlFragment-Wrapper--ShouldHighlight { /* FONT COLOR OF URL */
+    --HighlightColor: var(--colorFg);
+    --LowlightColor: var(--colorFg);
 }
 
-.UrlBar-UrlField { /* FONT COLOR OF URL PART 2 */
-    color: var(--colorFg);
+#browser.color-behind-tabs-on:not(.transparent-tabbar) #tabs-tabbar-container .UrlBar-AddressField:not(:focus-within) .UrlFragment-Wrapper, #browser.color-behind-tabs-on:not(.transparent-tabbar) #tabs-tabbar-container .UrlBar-AddressField:not(:focus-within) .UrlFragment-Wrapper--ShouldHighlight {
+    --HighlightColor: var(--colorFg); /* FONT COLOR OF URL IN ALTERNATIVE URL BAR */
+    --LowlightColor: var(--colorFg);
 }
+
 
 .OmniDropdown { 
     background-color: var(--colorBg); /* CHANGING BG COLOR OF DROPDOWN URL */
@@ -314,7 +317,7 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 
 /* WORKSPACES */
 
-.tabs-left #tabs-tabbar-container .toolbar-tabbar-before, .tabs-left #tabs-tabbar-container .toolbar-tabbar-after, .tabs-right #tabs-tabbar-container .toolbar-tabbar-before, .tabs-right #tabs-tabbar-container .toolbar-tabbar-after { 
+.tabs-left #tabs-tabbar-container .toolbar-tabbar-before, .tabs-right #tabs-tabbar-container .toolbar-tabbar-before {
     padding: 0px 0px 3px 0px; /* ADJUSTING PADDING OF WORKSPACE BUTTON - TABSLEFT+TABSRIGHT */
 }
 
@@ -554,7 +557,11 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 
 .tabs-left #tabs-container .toolbar-tabbar-after, .tabs-right #tabs-container .toolbar-tabbar-after { /* ADJUSTING POSITION OF ICONS UNDER TABS */
     /*margin-bottom: 0px; 8.1*/
-    margin-top: 41px;
+    /*margin-top: 41px;*/
+}
+
+.tabs-left #tabs-tabbar-container .toolbar-tabbar-after, .tabs-right #tabs-tabbar-container .toolbar-tabbar-after { /* ADJUSTING PADDING OF ICONS UNDER TABS */
+    padding: 0px;
 }
 
 #tabs-container .toolbar-tabbar-before > div > .button-toolbar > button, #tabs-container .toolbar-tabbar-after > div > .button-toolbar > button, #tabs-container .toolbar-tabbar-before > .button-toolbar > button, #tabs-container .toolbar-tabbar-after > .button-toolbar > button {
@@ -585,7 +592,7 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 }
 
 .toolbar, .toolbar-group, .toolbar-wrap {
-    gap: 5px; /* ADJUSTING GAP BETWEEN ICONS */
+    gap: 2px; /* ADJUSTING GAP BETWEEN ICONS */
 }
 
 #panels-container {
@@ -1747,6 +1754,10 @@ input[type=button]:not(.circular).danger.danger:hover { /* FIXING HOVER OF DELET
 
 .page-confirm-info-bar input { /* ADJUSTING THE DESIGN OF RELOAD BUTTON PART 2 */
     background-color: color-mix(in srgb, var(--colorBg), var(--transparent));
+}
+
+.theme-light .page-confirm-info-bar input { /* REMOVING BORDER OF RELOAD BUTTON IN LIGHT THEME */
+    border-color: transparent;
 }
 
 .page-confirm-info-bar .infobar-controls svg { /* CHANGING COLOR OF CLOSE BUTTON */
