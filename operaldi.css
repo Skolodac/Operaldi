@@ -7,7 +7,7 @@ float web app panel
 moooooooooooožnááá:
 arc like pinned taby?
 
-*/ 
+*/
 
 :root {
     --transparent: transparent 50%; /* TRANSPARENCY OF BROWSER - 50% */
@@ -18,7 +18,7 @@ arc like pinned taby?
 /* SETTINGS OF ALL INPUTS */
 
 select:not(.sortselector-dropdown) { /* ADJUSTING SELECTS IN MANY WINDOWS ETC */
-    background-color: color-mix(in srgb, var(--colorBg), var(--transparent)) !important;
+    background-color: color-mix(in srgb, var(--colorAccentBg), var(--transparent)) !important;
     border-color: transparent;
 }
 
@@ -33,8 +33,13 @@ input[type=button]:not(.circular).primary, input[type=submit]:not(.circular).pri
 
 input[type=button]:not(.circular).primary:hover, input[type=submit]:not(.circular).primary:hover, input[type=submit][type=submit]:hover { /* REMOVING UGLY COLORS FROM HOVER OF PRIMARY BUTTON IN MANY WINDOWS ETC */
     color: var(--colorFg);
-    background: var(--colorBg) !important;
+    background: var(--colorAccentBg) !important;
     border-color: transparent;
+}
+
+input[type=button]:not(.circular):hover:not(:disabled), input[type=submit]:hover:not(:disabled), input[type=color]:hover:not(:disabled), .FormButton:hover:not(:disabled) { /* FIXING HOVER OF BUTTONS IN MANY WINDOWS ETC */
+    background-image: none;
+    background-color: var(--colorAccentBg);
 }
 
 :focus-visible {
@@ -52,16 +57,16 @@ input, input[type=search], input[type=password], input[type=email], input[type=u
 
 input[type=radio], input[type=checkbox] {
     box-shadow: none; /* REMOVE SHADOW FROM CHECKBOX LIGHT MODE */
-    background-color:  color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent));
 }
 
 .theme-dark input[type=radio], .theme-dark input[type=checkbox] {
     background-image: none; /* REMOVE SHADOW FROM CHECKBOX DARK MODE */
-    background-color:  color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent));
 }
 
 input[type=checkbox]:checked { /* BG COLOR OF CHECKED CHECKBOX */
-    background-color:  color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent));
 }
 
 input[type=radio]:checked, input[type=checkbox]:checked { /* BORDER COLOR OF CHECKED CHECKBOX */
@@ -79,7 +84,7 @@ input[type=checkbox]:before, input[type=checkbox]:after { /* COLOR OF ICON IN CH
     border-top-right-radius: var(--radius);
 }
 #modal-bg .modal-wrapper { /* BG COLOR */
-    background-color: color-mix(in srgb, color-mix(in srgb, var(--colorBg), var(--colorHighlightBg)), var(--lessTransparent));
+    background-color: color-mix(in srgb, var(--colorBg), var(--lessTransparent));
     backdrop-filter: var(--blur);
     -webkit-backdrop-filter: var(--blur);
     border-radius: var(--radius);
@@ -90,7 +95,11 @@ input[type=checkbox]:before, input[type=checkbox]:after { /* COLOR OF ICON IN CH
 }
 
 #modal-bg input { /* BG COLOR OF MODAL INPUT */
-    background-color: color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color: color-mix(in srgb, var(--colorAccentBg), var(--transparent));
+}
+
+#modal-bg input:hover { /* HOVER OF MODAL BUTTONS */
+    background-color: var(--colorAccentBg);
 }
 
 /* MAINBAR */
@@ -119,6 +128,8 @@ input[type=checkbox]:before, input[type=checkbox]:after { /* COLOR OF ICON IN CH
 #browser:is(.popup, .is-settingspage):not(.fullscreen, .disable-titlebar) #header { /* DIFFERENT SETTINGS OF HEADER FOR POPUP WINDOW */
     background-color:  color-mix(in srgb, var(--colorBg), var(--transparent));
     border-radius: var(--radius);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
 }
 
 .popup .mainbar { /* DIFFERENT SETTINGS OF MAINBAR FOR POPUP WINDOW */
@@ -144,16 +155,16 @@ input[type=checkbox]:before, input[type=checkbox]:after { /* COLOR OF ICON IN CH
 }
 
 .SearchField:hover, .UrlBar-AddressField:hover { /* HOVER OF SEARCHBAR */
-    background-color: var(--colorBg);
+    background-color: var(--colorAccentBg);
 }
 
 #browser.color-behind-tabs-on:not(.transparent-tabbar) #tabs-tabbar-container .UrlBar-AddressField:not(:focus-within):hover {
-    background: var(--colorBg); /* BG COLOR OF HOVER OF URL BAR - TABSTOP */
+    background: var(--colorAccentBg); /* BG COLOR OF HOVER OF URL BAR - TABSTOP */
 }
 
 .color-behind-tabs-on .SearchField:focus-within, .color-behind-tabs-on .MailSearchField-Inner:focus-within, .color-behind-tabs-on .UrlBar-AddressField:focus-within {
     outline: none; /* REMOVE OF SEARCHBAR BORDER WHEN IN FOCUS */
-    background-color: var(--colorBg);
+    background-color: var(--colorAccentBg);
 }
 
 .UrlFragment-Wrapper--ShouldHighlight { /* FONT COLOR OF URL */
@@ -166,9 +177,8 @@ input[type=checkbox]:before, input[type=checkbox]:after { /* COLOR OF ICON IN CH
     --LowlightColor: var(--colorFg);
 }
 
-
 .OmniDropdown { 
-    background-color: var(--colorBg); /* CHANGING BG COLOR OF DROPDOWN URL */
+    background-color: var(--colorAccentBg); /* CHANGING BG COLOR OF DROPDOWN URL */
 }
 
 .OmniLinkItem:not(.OmniLinkItem--Highlighted):hover { 
@@ -180,7 +190,7 @@ li.omni-clickable:not(:last-child) { /* ADDING GAP BETWEEN LINKS IN DROPDOWN URL
 }
 
 .omni-clickable:hover .displayUrl, .omni-clickable:hover .displayTitle, .omni-clickable:hover span { /* CHANGING COLOR OF HOVER OF LINKS IN DROPDOWN URL */
-    color: var(--colorBg);
+    color: var(--colorFg);
 }
 
 .address-top .mainbar {
@@ -188,7 +198,7 @@ li.omni-clickable:not(:last-child) { /* ADDING GAP BETWEEN LINKS IN DROPDOWN URL
 }
 
 .mainbar button:hover { /* HOVER OF MAINBAR BUTTONS */
-    background-color: var(--colorBg);
+    background-color: var(--colorAccentBg);
 }
 
 .disable-titlebar.address-top#browser:not(.tabs-top) .vivaldi {
@@ -205,11 +215,11 @@ li.omni-clickable:not(:last-child) { /* ADDING GAP BETWEEN LINKS IN DROPDOWN URL
 }
 
 #browser:not(.tabs-top) .vivaldi:hover, #browser:not(.tabs-top) .vivaldi:focus-visible { /* HOVER OF HAMBURGER BUTTON - TABSLEFT+TABSRIGHT*/
-    background-color: var(--colorBg);
+    background-color: var(--colorAccentBg);
 }
 
 .color-behind-tabs-on .vivaldi:hover, .color-behind-tabs-on .vivaldi:focus-visible { /* HOVER OF HAMBURGER BUTTON - TABSTOP */
-    background-color: var(--colorBg);
+    background-color: var(--colorAccentBg);
 }
 
 #browser.win.maximized:not(.auto-hide, .tabs-top) .mainbar .toolbar > div:first-of-type { /* ADJUSTING POSITION OF COMPACT MODE BUTTON WHILE NOT IN AUTOHIDE MODE OR TABSTOP - TABSTOP */
@@ -222,12 +232,12 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 }
 
 .toolbar > .button-toolbar.button-on, .toolbar > .toolbar-group .button-toolbar.button-on, .toolbar > .button-toolbar > .button-on.button-on, .toolbar > .toolbar-group .button-toolbar > .button-on.button-on {
-    fill: var(--colorFg); /* CHANGING COLOR FROM HIGHLIGHT */
+    fill: var(--colorFg); /* CHANGING COLOR OF HIGHLIGHT */
     color: var(--colorFg);
 }
 
 .color-behind-tabs-on .toolbar-mainbar .toolbar-extensions > .button-toolbar > button.button-pressed, .color-behind-tabs-on .toolbar-mainbar .page-zoom-controls > .button-toolbar > button.button-pressed, .color-behind-tabs-on .toolbar-mainbar > .button-toolbar > button.button-pressed {
-    background-image: linear-gradient(var(--colorBg),var(--colorBg)); /* CHANGE COLOR WHEN ICON IS ACTIVE */
+    background-image: linear-gradient(var(--colorAccentBg),var(--colorAccentBg)); /* CHANGE COLOR WHEN ICON IS ACTIVE */
 }
 
 .density-on#browser.win.disable-titlebar .window-buttongroup { /* FIXING POSITION OF WINDOW BUTTONS - TABSLEFT+TABSRIGHT */
@@ -244,11 +254,11 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 }
 
 #browser.win .window-buttongroup button:hover {
-    background-color: var(--colorBg); /* HOVER OF WINDOW BUTTONS LIGHT THEME*/
+    background-color: var(--colorAccentBg); /* HOVER OF WINDOW BUTTONS LIGHT THEME*/
 }
 
 .theme-dark#browser.win .window-buttongroup button:hover {
-    background-color: var(--colorBg); /* HOVER OF WINDOW BUTTONS DARK THEME */
+    background-color: var(--colorAccentBg); /* HOVER OF WINDOW BUTTONS DARK THEME */
 }
 
 #browser.win .window-buttongroup button:hover {
@@ -256,7 +266,7 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 }
 
 #browser.win .window-buttongroup button.window-close:hover {
-    background-color: var(--colorBg); /* HOVER OF WINDOW CLOSE BUTTON */
+    background-color: var(--colorAccentBg); /* HOVER OF WINDOW CLOSE BUTTON */
     fill: var(--colorFg);
 }
 
@@ -301,9 +311,14 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
     padding: 5px;
 }
 
-.color-behind-tabs-on .bookmark-bar button { /* STYLING BOOKMARKS BUTTONS */
+.color-behind-tabs-on .bookmark-bar button { /* STYLING BOOKMARK BUTTONS */
     background-color: transparent;
     border-radius: var(--radius);
+    margin-right: 5px;
+}
+
+.color-behind-tabs-on .bookmark-bar button:hover { /* HOVER OF BOOKMARK BUTTONS */
+    background-color: var(--colorAccentBg);
 }
 
 .bookmark-bar .spacer { /* REMOVING SPACER IN FRONT OF BOOKMARK BUTTONS */
@@ -338,7 +353,7 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 }
 
 .color-behind-tabs-on #tabs-tabbar-container .toolbar-tabbar-before > .button-toolbar:not(.toolbar-spacer, .toolbar-spacer-flexible) > button:not([disabled]):hover, .color-behind-tabs-on #tabs-tabbar-container .toolbar-tabbar-after > .button-toolbar:not(.toolbar-spacer, .toolbar-spacer-flexible) > button:not([disabled]):hover, .color-behind-tabs-on #tabs-tabbar-container .toolbar-tabbar-before > .button-toolbar:not(.toolbar-spacer, .toolbar-spacer-flexible) > button:not([disabled]).button-pressed, .color-behind-tabs-on #tabs-tabbar-container .toolbar-tabbar-after > .button-toolbar:not(.toolbar-spacer, .toolbar-spacer-flexible) > button:not([disabled]).button-pressed {
-    background-color: var(--colorBg); /* BG OF WORKSPACE BUTTON WHEN WORKSPACE WINDOW IS OPENED */
+    background-color: var(--colorAccentBg); /* BG OF WORKSPACE BUTTON WHEN WORKSPACE WINDOW IS OPENED */
 }
 
 /* TABS */
@@ -468,12 +483,12 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
     max-width: calc(100% - var(--densityGap) * 0);
 }  
 
-#browser.color-behind-tabs-on .tab.active.active { /* BG OF ACTIVE TAB */
-    background-color: var(--colorBg);
+#browser .tab-position:not(.colored) .tab.active { /* BG OF ACTIVE TAB */
+    background-color: var(--colorAccentBg) !important;
 }
 
-#tabs-container .tab:not(.tab-group,.tab.active):hover { /* HOVER OF TABS PART 1 */
-    background-color: var(--colorBg);
+#browser .tab-position:not(.colored) .tab:not(.active):hover { /* HOVER OF TABS PART 1 */
+    background-color: var(--colorAccentBg) !important;
 }
 
 .color-behind-tabs-on.ui-transparent-tabs .tab-wrapper:hover .tab:not(.active) { /* HOVER OF TABS PART 2 */
@@ -503,20 +518,20 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 }
 
 #browser .tab-position:not(.colored) .tab:not(.active).tab-in-accordion, .tab-position:not(.colored) .tab-accordion {
-    background-color: color-mix(in srgb, var(--colorBg), var(--transparent));  /* BG COLOR OF TAB GROUP  */
+    background-color: color-mix(in srgb, var(--colorAccentBg), var(--transparent));  /* BG COLOR OF TAB GROUP  */
     color: var(--colorFg);
 }
 
 #browser .tab-position:not(.colored).accordion-toggle-arrow:hover, #browser .tab-position:not(.colored) .tab:not(.active):hover {
-    background-color: var(--colorBg);  /* BG COLOR OF HOVER TAB IN GROUP */ 
+    background-color: var(--colorAccentBg);  /* BG COLOR OF HOVER TAB IN GROUP */ 
 }
 
 #browser .tab-position.accordion-toggle-arrow, #browser .tab-position:not(.colored) .tab.active  {
-    background-color: var(--colorBg);  /* BG COLOR OF ACTIVE TAB IN GROUP */ 
+    background-color: var(--colorAccentBg);  /* BG COLOR OF ACTIVE TAB IN GROUP */ 
 } 
 
 #browser .tab-position.accordion-toggle-arrow { /* ARROW SETTINGS */
-    background-color: color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color: color-mix(in srgb, var(--colorAccentBg), var(--transparent));
     color: var(--colorFg);
 }
 
@@ -539,7 +554,7 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 
 #browser .tab-position .stack-counter {
     background-color: var(--colorHighlightBg); /* BG COLOR OF TAB GROUP NUMBER */
-    color: var(--colorAccentBg);
+    color: var(--colorFg);
 }
 
 #browser.tabs-top .tabbar-wrapper .colored { /* BORDER RADIUS OF COLORED TAB GROUP - TABSTOP */
@@ -552,12 +567,12 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 
 .button-badge { /* ADJUSTING NOTIFICATION DOT */
     border: none;
-    color: var(--colorAccentBg);
+    color: var(--colorFg);
 }
 
 .tabs-left #tabs-container .toolbar-tabbar-after, .tabs-right #tabs-container .toolbar-tabbar-after { /* ADJUSTING POSITION OF ICONS UNDER TABS */
     /*margin-bottom: 0px; 8.1*/
-    /*margin-top: 41px;*/
+    margin-top: 41px;
 }
 
 .tabs-left #tabs-tabbar-container .toolbar-tabbar-after, .tabs-right #tabs-tabbar-container .toolbar-tabbar-after { /* ADJUSTING PADDING OF ICONS UNDER TABS */
@@ -588,11 +603,11 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 /* SIDEBAR */
 
 #switch {
-    padding-top: 5px; /* ADJUSTING SPACE ABOVE SIDEBAR ICONS */
+    padding-top: 6px; /* ADJUSTING SPACE ABOVE SIDEBAR ICONS */
 }
 
 .toolbar, .toolbar-group, .toolbar-wrap {
-    gap: 2px; /* ADJUSTING GAP BETWEEN ICONS */
+    gap: 5px; /* ADJUSTING GAP BETWEEN ICONS */
 }
 
 #panels-container {
@@ -648,21 +663,21 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 }
 
 #panels-container button:hover { /* HOVER OF BUTTONS ON SIDEBAR */
-    background-color: var(--colorBg);
+    background-color: var(--colorAccentBg);
 }
 
 .ExtensionIcon--Hidden:hover, .ExtensionIcon--Hidden:active { /* HOVER OF HIDDEN EXTENSIONS */
-    background-color: var(--colorBg);
+    background-color: var(--colorAccentBg);
     border-radius: var(--radius);
 }
 
 .density-on#browser .toolbar-vertical .button-toolbar:not(:last-of-type) { /* ADJUSTING HIDDEN EXTENSIONS HOVER */
     padding-bottom: 0px;
-    height: 34px;
+    height: 34px !important;
 }
 
 .density-on:not(.unified-ui) #switch > * > .button-toolbar.active button {
-    background-color: var(--colorBg); /* CHANGING BG COLOR AND ICON COLOR WHEN ICON IN PANEL IS ACTIVE */
+    background-color: var(--colorAccentBg); /* CHANGING BG COLOR AND ICON COLOR WHEN ICON IN PANEL IS ACTIVE */
 }
 
 /* WEB PANELS */
@@ -713,7 +728,9 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 }
 
 #panels-container.overlay .panel-group { /* ADJUSTING DESIGN OF FLOATING WEB APP PANELS */
-    background-color: color-mix(in srgb, color-mix(in srgb, var(--colorBg), var(--colorHighlightBg)), var(--lessTransparent));
+    background-color: color-mix(in srgb, var(--colorBg), var(--lessTransparent));
+    backdrop-filter: var(--blur) !important;
+    -webkit-backdrop-filter: var(--blur) !important;
     margin: 0px 8px;
     padding: 0px 5px;
 }
@@ -736,12 +753,12 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 }
 
 .vivaldi-tree .tree-row.dragover, .hasfocus .vivaldi-tree:focus-within .tree-row[data-selected] { /* BG COLOR OF SELECTED ITEM WHEN BROWSER IS IN FOCUS */
-    background-color:  color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent));
     color: var(--colorFg);
 }
 
 .vivaldi-tree .tree-row[data-selected] { /* BG COLOR OF SELECTED ITEM WHEN BROWSER ISNT IN FOCUS */
-    background-color:  color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent));
 }
 
 .win.hasfocus .vivaldi-tree .VivaldiList:focus-within .tree-item[data-lead] .tree-row.tree-row, .linux.hasfocus .vivaldi-tree .VivaldiList:focus-within .tree-item[data-lead] .tree-row.tree-row {
@@ -753,15 +770,27 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 }
 
 #browser .sortselector .sortselector-dropdown:hover:not(:disabled), #browser .sortselector .sortselector-dropdown:focus-visible { /* FIXING HOVER OF SORT */
-    background-color: var(--colorBg);
+    background-color: var(--colorAccentBg);
     border-radius: var(--radius);
 }
 
 #browser .sortselector { /* FIXING THE DESIGN OF SORT PART 2 */
-    background-color:  color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent));
     border-top: none;
     border-bottom: none;
     border-radius: var(--radius);
+}
+
+select:enabled:not([multiple], [size]):hover:not(:disabled), .VivaldiSelector:not(:focus-within, .VivaldiSelector--is-disabled) .VivaldiSelector__control:hover:not(:disabled) { /* FIXING THE DESIGN OF SORT PART 3 */
+    background-image: linear-gradient(var(--colorAccentBg), var(--colorAccentBg));
+}
+
+#browser .sortselector.sortselector-compact:hover { /* FIXING THE DESIGN OF SORT PART 4 */
+    background-color: var(--colorAccentBg);
+}
+
+#browser .sortselector .sortselector-button:hover:not(:disabled), #browser .sortselector .sortselector-dropdown:hover:not(:disabled), #browser .sortselector .sortselector-button:focus-visible, #browser .sortselector .sortselector-dropdown:focus-visible {
+    background-color: var(--colorAccentBg); /* FIXING THE DESIGN OF SORT PART 5 */
 }
 
 #browser .sortselector.sortselector-compact .sortselector-button { /* REMOVED BORDER NEXT TO ARROW IN SORT */
@@ -770,6 +799,10 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 
 .toolbar-default .button-toolbar > button:enabled { /* REMOVING BG OF BUTTONS */
     background-image: none;
+}
+
+.toolbar-default .button-toolbar > button:enabled:hover:not(:disabled) { /* HOVER OF BUTTONS */
+    background-image: linear-gradient(var(--colorAccentBg), var(--colorAccentBg));
 }
 
 .toolbar-group > .button-toolbar:not(:last-child) > button, .toolbar-group hr:not(:last-child) > button { /* BORDER RADIUS FOR BUTTONS PART 1 */
@@ -783,13 +816,13 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 }
 
 .panel input, .find-in-page input {
-    background-color: color-mix(in srgb, var(--colorBg), var(--transparent)); /* BG COLOR OF SEARCH BAR IN PANELS AND CTRL+F */
+    background-color: color-mix(in srgb, var(--colorAccentBg), var(--transparent)); /* BG COLOR OF SEARCH BAR IN PANELS AND CTRL+F */
 }
 
 /* BOOKMARKS PANEL */
 
 .item-count, .tree-item .nickname {
-    background-color:  color-mix(in srgb, var(--colorBg), var(--transparent)); /*BG COLOR OF ITEM COUNT */
+    background-color: color-mix(in srgb, var(--colorAccentBg), var(--transparent)); /*BG COLOR OF ITEM COUNT */
 }
 
 .panel-bookmarks .panel-bookmarks-edit {
@@ -841,12 +874,14 @@ input.circular, button.circular { /* ADJUSTING RADIUS OF HOVER OF DOWNLAOD FOLDE
 
 #calendar_panel input[type=button]:not(.circular), #calendar_panel input[type=submit], #calendar_panel input[type=color], #calendar_panel .FormButton { /* BG COLOR OF SEARCH BUTTON */
     background-image: none;
-    backdrop-filter: var(--blur);
-    -webkit-backdrop-filter: var(--blur);
+}
+
+#calendar_panel input[type=button]:not(.circular):hover { /* HOVER OF SEARCH BUTTON */
+    background-color: var(--colorAccentBg);
 }
 
 .DatePickerPopup {
-    background-color:  color-mix(in srgb, var(--colorBg), var(--transparent)); /* BG COLOR OF SELECTING WEEK WINDOW  PART 1 */
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent)); /* BG COLOR OF SELECTING WEEK WINDOW  PART 1 */
 }
 
 .DatePickerPopup .toolbar {
@@ -860,18 +895,23 @@ input.circular, button.circular { /* ADJUSTING RADIUS OF HOVER OF DOWNLAOD FOLDE
 #calendar_panel .PeriodPicker.PeriodPicker { /* FIXING BG OF PERIOD PICKER */
     border-color: transparent;
     background-image: none;
-    backdrop-filter: var(--blur);
-    -webkit-backdrop-filter: var(--blur);
+}
+
+#calendar_panel .PeriodPicker.PeriodPicker:hover:not(:disabled) {
+    background-image: linear-gradient(var(--colorAccentBg), var(--colorAccentBg)); /* HOVER OF PERIOD PICKER */
 }
 
 .toolbar-default .button-toolbar > button:enabled.button-pressed { /* FIXING ACTIVE BUTTON */
+    background-color:  var(--colorAccentBg);
     background-image: none;
-    backdrop-filter: var(--blur);
-    -webkit-backdrop-filter: var(--blur);
 }
 
 #panels #calendar_panel .cal-tasks-row, #panels #tasks_panel .cal-tasks-row {
-    background-color:  color-mix(in srgb, var(--colorBg), var(--transparent)); /* BG COLOR OF EVENTS IN AGENDA */
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent)); /* BG COLOR OF EVENTS IN AGENDA */
+}
+
+.calendar-grid-agenda .calendar-add-event-button:hover {
+    background: var(--colorAccentBg); /* HOVER OF ADD EVENT IN AGENDA */
 }
 
 .calendar-grid-agenda .cal-tasks-row {
@@ -888,7 +928,7 @@ input.circular, button.circular { /* ADJUSTING RADIUS OF HOVER OF DOWNLAOD FOLDE
 
 .MonthDayPicker {
     margin-bottom: 0px; /* FIXING BOTTOM PART */
-    background-color:  color-mix(in srgb, var(--colorBg), var(--transparent)); /* BG OF BOTTOM CALENDAR */
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent)); /* BG OF BOTTOM CALENDAR */
 }
 
 .CalendarPanel-MiniCalendar {
@@ -905,6 +945,7 @@ input.circular, button.circular { /* ADJUSTING RADIUS OF HOVER OF DOWNLAOD FOLDE
 }
 
 .MonthDayPicker-Day--SelectedWeek {
+    background-color: var(--colorAccentBg);
     border-radius: var(--radiusHalf); /* RADIUS OF SELECTED WEEK IN BOTTOM CALENDAR */
 }
 
@@ -924,23 +965,32 @@ input.circular, button.circular { /* ADJUSTING RADIUS OF HOVER OF DOWNLAOD FOLDE
 .calendar-grid-days .calendar-drop-target .day.current { /* ADJUSTING HIGHLIGHTED DAY IN WEEK CALENDAR  PART 2 */
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    color: var(--colorFg);
 }
 
 .calendar-grid .calendar-drop-target { /* BG COLOR OF DAYS IN WEEK CALENDAR PART 1 */
-    background-color:  color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent));
 }
 
 .calendar-grid .calendar-drop-target.weekend { /* BG COLOR OF DAYS IN WEEK CALENDAR PART 2 */
-    background-color:  color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent));
 }
 
 .calendar-add-event-button { /* BG COLOR OF DAYS IN WEEK CALENDAR PART 3 */
     background-image: none;
 }
 
+.calendar-grid .calendar-drop-target:hover { /* HOVER OF DAYS IN WEEK CALENDAR */
+    background-color: var(--colorAccentBg);
+}
+
 .calendar-add-event-button { /* REMOVING BORDER AND CHANGING RADIUS IN WEEK CALENDAR */
     border: none;
     border-radius: var(--radius);
+}
+
+.calendar-add-event-button:hover { /* HOVER OF ADD EVENT IN WEEK CALENDAR */
+    background-color: var(--colorAccentBg);
 }
 
 .calendar-grid-day { /* ADJUSTING POSITION OF MIDDLE PART IN DAY CALENDAR */
@@ -950,6 +1000,7 @@ input.circular, button.circular { /* ADJUSTING RADIUS OF HOVER OF DOWNLAOD FOLDE
 .calendar-grid .calendar-header-date { /* ADDING RADIUS TO HEADER IN DAY CALENDAR */
     outline: none;
     border-radius: var(--radius);
+    background-color: var(--colorAccentBg);
 }
 
 /* MAIL PANEL */
@@ -963,7 +1014,7 @@ input.circular, button.circular { /* ADJUSTING RADIUS OF HOVER OF DOWNLAOD FOLDE
 .CustomizePanelPopup { /* ADJUSTING DESIGN OF PANEL */
     top: 5px;
     bottom: 5px;
-    background-color: color-mix(in srgb, color-mix(in srgb, var(--colorBg), var(--colorHighlightBg)), var(--lessTransparent));
+    background-color: color-mix(in srgb, var(--colorBg), var(--lessTransparent));
     backdrop-filter: var(--blur);
     -webkit-backdrop-filter: var(--blur);
 }
@@ -977,16 +1028,20 @@ input.circular, button.circular { /* ADJUSTING RADIUS OF HOVER OF DOWNLAOD FOLDE
 }
 
 .CustomizePanelPopup input { /* ADJUSTING COLOR OF SEARCH BAR */
-    background-color:  color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent));
 }
 
 .CustomizePanelPopup .FormButton { /* ADJUSTING COLOR OF BUTTON PART 1 */
-    background-color:  color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent));
     background-image: none;
 }
 
 .CustomizePanelPopup button { /* ADJUSTING COLOR OF BUTTON PART 2 */
     border-color: transparent;
+}
+
+.CustomizePanelPopup-Items:not(:has(.CustomizePanelPopup-DragItem)) .CustomizePanelPopup-Item:hover {
+    background-color: var(--colorAccentBg); /* HOVER OF ITEMS */
 }
 
 /* INNER ROUND BORDERS */
@@ -1003,13 +1058,14 @@ background-color: transparent;
 /* TAB TILES MODE */
 
 .tab-dropzone.dropleft > h1, .tab-dropzone.dropright > h1, .tab-dropzone.droptop > h1, .tab-dropzone.dropbottom > h1 { /* ADJUSTING MOVING TILES BG COLORS */
-    background-color: color-mix(in srgb, color-mix(in srgb, var(--colorBg), var(--colorHighlightBg)), var(--lessTransparent));
+    background-color: color-mix(in srgb, var(--colorBg), var(--lessTransparent));
     backdrop-filter: var(--blur);
     -webkit-backdrop-filter: var(--blur);
+    border: 2px solid var(--colorFg);
 }
 
 .tab-dropzone.dropcenter:not(.movingtile) > h1 { /* ADJUSTING MOVING TAB TO THE NEW WINDOW BG COLOR */
-    background-color: color-mix(in srgb, color-mix(in srgb, var(--colorBg), var(--colorHighlightBg)), var(--lessTransparent));
+    background-color: color-mix(in srgb, var(--colorBg), var(--lessTransparent));
     backdrop-filter: var(--blur);
     -webkit-backdrop-filter: var(--blur);
 }
@@ -1093,7 +1149,7 @@ background-color: transparent;
 }
 
 .SpeedDialView-Settings input:not(.Switch-Input) {
-    background-color:  color-mix(in srgb, var(--colorBg), var(--transparent)); /* CHANGING BG COLOR OF SELECT IMAGE */
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent)); /* CHANGING BG COLOR OF SELECT IMAGE */
 }
 
 select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector:not(:focus-within) .Inner__control {
@@ -1109,11 +1165,11 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
 }
 
 .theme-dark#browser .Switch-Input:not(:checked) { /* CHANGING BG COLOR OF UNCHECKED SWITCH DARK MODE */
-    background-color: color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color: color-mix(in srgb, var(--colorAccentBg), var(--transparent));
 }
 
 #browser .Switch-Input:not(:checked) { /* CHANGING BG COLOR OF UNCHECKED SWITCH LIGHT MODE*/
-    background-color: color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color: color-mix(in srgb, var(--colorAccentBg), var(--transparent));
 }
 
 #browser .Switch-Input:not(:checked) + .Switch-Button { /* CHANGING COLOR FROM DOT OF UNCHECKED SWITCH */
@@ -1122,6 +1178,7 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
 
 #browser .Switch-Button { /* REMOVING SHADOW FROM DOT OF SWITCH */
     box-shadow: none;
+    background-color: var(--colorAccentBg);
 }
 
 .startpage .startpage-navigation { /* ADJUSTING THE DESIGN OF SPEED DIAL NAVIGATION */
@@ -1139,7 +1196,7 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
 }
 
 #browser .button-startpage:hover { /* BORDER RADIUS OF HOVER */
-    background-color: var(--colorBg);
+    background-color: var(--colorAccentBg);
     border-radius: var(--radius);
 }
 
@@ -1149,7 +1206,7 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
 
 #browser .button-startpage.active {
     border-color: transparent; /* REMOVING BORDER FROM ACTIVE */
-    background-color: var(--colorBg);
+    background-color: var(--colorAccentBg);
 }
 
 .startpage .startpage-navigation .startpage-navigation-group:first-of-type { /* ADJUSTING FIRST GROUP IN NAV BAR */
@@ -1212,7 +1269,7 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
 }
 
 .TabbedView-List button.active { /* ADJUSTING THE DESIGN OF WIDGETS PART 8 */
-    background-color: var(--colorBg);
+    background-color: var(--colorAccentBg);
     box-shadow: none;
     border: none;
     color: var(--colorFg);
@@ -1223,8 +1280,8 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
     box-shadow: none;
 }
 
-.startpage input, .startpage select, .startpage textarea, .startpage .dateInput input[type=date], .startpage .dateInput input[type=time] { /* ADJUSTING THE DESIGN OF WIDGETS PART 9 */
-    background-color:  color-mix(in srgb, var(--colorBg), var(--transparent));
+.startpage input, .startpage select, .startpage textarea, .startpage .dateInput input[type=date], .startpage .dateInput input[type=time] { /* ADJUSTING THE DESIGN OF WIDGETS PART 10 */
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent));
 }
 
 #browser .Dashboard-CalendarWidget .scrollable { /* FIXING CALENDAR WIDGET */
@@ -1271,7 +1328,7 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
 }
 
 .SpeedDial-Add-Button:hover { /* FIXING BOTTOM BUTTONS PART 3 */
-    background-color:  var(--colorBg);
+    background-color:  var(--colorAccentBg);
 }
 
 .dashboard-list-wrapper { /* FIXING ADD WIDGET WINDOW PART 1 */
@@ -1284,7 +1341,7 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
 
 .dashboard-list-wrapper .button-wrapper .add-button { /* FIXING ADD WIDGET WINDOW PART 2 */
     box-shadow: none;
-    background-color:  color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent));
 }
 
 .startpage .close { /* ADJUSTING CLOSE BUTTON IN ADD WIDGET WINDOW */
@@ -1312,10 +1369,14 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
     height: 34px;
 }
 
+.toolbar-statusbar > .button-toolbar > button:hover, .button-toolbar > button:active { /* HOVER OF BUTTONS */
+    background-color: var(--colorAccentBg);
+}
+
 /* VIVALDI SETTINGS */
 
 .vivaldi-settings .settings-content {
-    background-color: color-mix(in srgb, color-mix(in srgb, var(--colorBg), var(--colorHighlightBg)), var(--lessTransparent)); /* VIVALDI SETTINGS WERENT READABLE WITH COLORBG PART 1 */
+    background-color: color-mix(in srgb, var(--colorBg), var(--lessTransparent)); /* VIVALDI SETTINGS WERENT READABLE WITH COLORBG PART 1 */
 }
 
 .ThemeEditorColors {
@@ -1336,7 +1397,7 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
 /* WORKSPACES WINDOW + SOME ADJUSTING FOR PAGE TILING WINDOW */
 
 .button-popup { /* BG OF WORKSPACE WINDOW PART 1 */
-    background-color:  color-mix(in srgb, color-mix(in srgb, var(--colorBg), var(--colorHighlightBg)), var(--lessTransparent)); /* BG COLOR OF ALL WINDOW POPUPS */
+    background-color: color-mix(in srgb, var(--colorBg), var(--lessTransparent)); /* BG COLOR OF ALL WINDOW POPUPS */
     backdrop-filter: var(--blur);
     -webkit-backdrop-filter: var(--blur);
     /* width: 194px; */
@@ -1348,6 +1409,14 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
 
 .WorkspacePopup { /* BG OF WORKSPACE WINDOW PART 2 LIGHT MODE */
     background-color: transparent;
+}
+
+.WorkspacePopup-Items .workspace-item-wrapper.selected:not(.this-window), .WorkspacePopup-Items .this-window.selected:not(.this-window) {
+    background-color: var(--colorAccentBg); /* BG COLOR OF ACTIVE WORKSPACE */
+}
+
+:not(:active, .workspace-item-wrapper).WorkspacePopup-Items .workspace-item-wrapper:hover, :not(:active, .workspace-item-wrapper).WorkspacePopup-Items .this-window:hover {
+    background-color: var(--colorAccentBg); /* HOVER OF START PAGE WORKSPACE */
 }
 
 .WorkspacePopup-Items .workspace-item-wrapper .checkmark, .WorkspacePopup-Items .this-window .checkmark { /* ADJUSTING CHECKMARK OF ACTIVE WORKSPACE */
@@ -1375,7 +1444,7 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
 }
 
 .WorkspacePopup .button-toolbar > button { /* BG COLOR OF NEW WORKSPACE BUTTON PART 1 */
-    background-color: color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color: color-mix(in srgb, var(--colorAccentBg), var(--transparent));
 }
 
 .WorkspacePopup .FormButton { /* BG COLOR OF NEW WORKSPACE BUTTON PART 2 */
@@ -1392,11 +1461,11 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
 }
 
 .WorkspacePopup-Items .workspace-item-wrapper:hover:not(.Workspace-Editor.workspace-item-wrapper) { /* REMOVING HOVER FROM EDITOR OF BG PART 2 */
-    background-color: var(--colorBg) !important;
+    background-color: var(--colorAccentBg) !important;
 }
 
 .WorkspacePopup-Items .workspace-item-wrapper input:focus, .WorkspacePopup-Items .workspace-item-wrapper input { /* CHANGING BG COLOR OF INPUT BAR OF NEW WORKSPACE NAME */
-    background-color: color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color: color-mix(in srgb, var(--colorAccentBg), var(--transparent));
 }
 
 .Workspace-Editor.workspace-item-wrapper .workspace-buttons { 
@@ -1404,28 +1473,32 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
 }
 
 .Workspace-Editor.workspace-item-wrapper .workspace-buttons input.active { /* CHANGING BG COLOR OF ACTIVE ICON EMOJI BUTTON */
-    background-color: var(--colorBg);
+    background-color: var(--colorAccentBg);
+}
+
+.Workspace-Editor.workspace-item-wrapper .workspace-buttons input.active:hover { /* HOVER OF ACTIVE ICON EMOJI BUTTON */
+    background-color: var(--colorAccentBg);
 }
 
 .Workspace-Editor.workspace-item-wrapper .workspace-buttons input { /* CHANGING BG COLOR OF NON-ACTIVE ICON EMOJI BUTTON */
-    background-color: color-mix(in srgb, var(--colorBg), var(--transparent));
-}
-
-.Workspace-Editor.workspace-item-wrapper .workspace-buttons input:hover { /* CHANGING HOVER OF BG COLOR OF NON-ACTIVE ICON EMOJI BUTTON */
-    background-color: var(--colorBg);
+    background-color: color-mix(in srgb, var(--colorAccentBg), var(--transparent));
 }
 
 .Workspace-Editor.workspace-item-wrapper .workspaces input[type='text'] { /* ADJUSTING INPUT ANY EMOJI */
     border: none;
-    background-color:  color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color: color-mix(in srgb, var(--colorAccentBg), var(--transparent));
 }
 
 .WorkspacePopup input { /* CHANGING BG COLOR OF BUTTONS IN CREATE NEW WORKSPACE */
-    background-color: color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color: color-mix(in srgb, var(--colorAccentBg), var(--transparent));
 }
 
 .Workspace-Editor.workspace-item-wrapper .workspaces input[type='submit'] { /* REMOVING BORDER OF DONE BUTTON */
     border-color: transparent;
+}
+
+.Workspace-Editor.workspace-item-wrapper ul li.active { /* BG COLOR OF SELECTED ICON EMOJI */
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent));
 }
 
 .WorkspacePopup input[type=submit] { /* ADJUSTING DONE BUTTON */
@@ -1443,6 +1516,10 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
     border-bottom-color: transparent;
 }
 
+.PageTiling-Button:hover { /* HOVER OF BUTTONS */
+    background-color: var(--colorAccentBg);
+}
+
 /* CALENDAR NOTIFICATIONS WINDOW */
 
 #modal-bg.calendar-alarm { /* REMOVING COLOR WHICH MADE BROWSER DARKER WHEN NOTIFICATION SHOWS */
@@ -1450,7 +1527,7 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
 }
 
 .CalendarNotifications { /* ADJUSTING BG OF CALENDAR NOTIFICATION */
-    background-color:  color-mix(in srgb, color-mix(in srgb, var(--colorBg), var(--colorHighlightBg)), var(--lessTransparent));
+    background-color: color-mix(in srgb, var(--colorBg), var(--lessTransparent));
     backdrop-filter: var(--blur);
     -webkit-backdrop-filter: var(--blur);
 }
@@ -1466,6 +1543,22 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
 
 .CalendarNotification-Content { /* ADJUSTING MARGIN OF NAME OF EVENT */
     margin: 0 5px 0 5px;
+}
+
+.CalendarNotification-Content:hover, .CalendarNotification-Content:focus-within { /* REMOVING HOVER OF EVENT */
+    background-color: transparent;
+}
+
+.CalendarNotification-Content .button-toolbar > button:hover { /* HOVER OF DISMISS AND SNOOZE BUTTONS */
+    background-color: var(--colorAccentBg) !important;
+}
+
+.CalendarNotification-Content .button-toolbar > button:not(:active,:hover)  { /* COLOR OF BUTTONS */
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent));
+}
+
+.button-toolbar > button > span.button-toolbar-menu-indicator:hover { /* ADJUSTING HOVER OF SNOOZE ARROW */
+    background-color: transparent;
 }
 
 .dialog-double-header, .dialog-content, .dialog-footer { /* ADJUSTING PADDING OF FOOTER */
@@ -1491,11 +1584,11 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
 }
 
 .TabButtonPopup > header .qc-entry { /* BG COLOR OF SEARCH BAR */
-    background-color:  color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent));
 }
 
 .TabButtonPopup > header .button-toolbar > button:hover { /* BG COLOR OF HOVER OF MENU ICON */
-    background-color: var(--colorBg);
+    background-color: var(--colorAccentBg);
 }
 
 .TabButtonPopup .dialog-content, .TabButtonPopup .no-results { /* BG COLOR OF THE REST */
@@ -1503,11 +1596,11 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
 }
 
 .theme-dark .TabButtonPopup .vivaldi-tree .VivaldiList .tree-item .tree-row { /* BG BEHIND TEXT DARK MODE */
-    background-color: color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent));
 }
 
 .TabButtonPopup .vivaldi-tree .VivaldiList .tree-item .tree-row { /* BG BEHIND TEXT LIGHT MODE */
-    background-color: color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent));
 }
 
 .TabButtonPopup .quick-commands, .TabButtonPopup .dialog-content, .TabButtonPopup .no-results { /* BG OF RESULTS FROM SEARCH BAR PART 1 */
@@ -1516,7 +1609,7 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
 
 .TabButtonPopup .quick-commands > .VivaldiList .VivaldiList-Offset {
     padding: 6px 6px;
-    background-color:  color-mix(in srgb, var(--colorBg), var(--transparent)); /* BG OF RESULTS FROM SEARCH BAR PART 2 */
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent)); /* BG OF RESULTS FROM SEARCH BAR PART 2 */
     border-radius: var(--radiusHalf); /* BORDER RADIUS OF RESULTS PART 1 */
 }
 
@@ -1526,15 +1619,15 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
 }
 
 .TabButtonPopup .tree-row[data-selected] .window-entry:not(.window-entry-button) { /* BG OF SELECTED ITEM IN LIST */
-    background-color: var(--colorBg);
+    background-color: var(--colorAccentBg);
 }
 
 .hasfocus .TabButtonPopup .vivaldi-tree .VivaldiList:focus-within .tree-row[data-selected] .window-entry:not(.window-entry-button) {
-    background-color: var(--colorBg); /* BG OF SELECTED ITEM IN LIST */
+    background-color: var(--colorAccentBg); /* BG OF SELECTED ITEM IN LIST */
 }
 
 .TabButtonPopup .tree-row .window-entry:not(.window-entry-button):hover { /* BG OF HOVER OF ITEM IN LIST PART 1 */
-    background-color: var(--colorBg);
+    background-color: var(--colorAccentBg);
 }
 
 .TabButtonPopup .tree-row-selected label,
@@ -1543,11 +1636,11 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
 }
 
 .TabButtonPopup .vivaldi-tree .VivaldiList .tree-item .tree-row:not([data-selected]) .colored { /* BG COLOR OF TAB GROUPS IN TAB BUTTON */
-    background-color:  color-mix(in srgb, color-mix(in srgb, var(--colorBg), var(--colorHighlightBg)), var(--lessTransparent));
+    background-color: color-mix(in srgb, var(--colorBg), var(--lessTransparent));
 }
 
 .TabButtonPopup .vivaldi-tree input { /* BG OF BOTTOM BUTTON */
-    background-color:  color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent));
 }
 
 .TabButtonPopup .window-entry-button { /* FIXING POSITION OF BOTTOM BUTTON */
@@ -1577,9 +1670,9 @@ input[type=button]:not(.circular).danger, input[type=submit].danger, input[type=
 
 input[type=button]:not(.circular).danger.danger:hover { /* FIXING HOVER OF DELETE BUTTON */
     color: var(--colorFg);
-    background: var(--colorBg);
+    background-color: var(--colorAccentBg);
     border-color: transparent;
-    background-image: linear-gradient(var(--colorBg), var(--colorBg));
+    background-image: linear-gradient(var(--colorAccentBg), var(--colorAccentBg));
 }
 
 /* TOOLBAR EDITOR WINDOW */
@@ -1609,29 +1702,29 @@ input[type=button]:not(.circular).danger.danger:hover { /* FIXING HOVER OF DELET
 
 .hasfocus .quick-command-container .quick-commands .quick-command[data-selected] { /* FIXING BG COLOR OF HOVER OF ITEM WHEN BROWSER IS IN FOCUS */
     color: var(--colorFg);
-    background-color: var(--colorBg);
+    background-color: var(--colorAccentBg);
 }
 
 /* ADD BOOKMARK TO SPEED DIAL WINDOW */
 
 .startpage #modal-bg.startpage-drawer { /* BG COLOR OF WHOLE WINDOW */
-    background-color: color-mix(in srgb, color-mix(in srgb, var(--colorBg), var(--colorHighlightBg)), var(--lessTransparent));
+    background-color: color-mix(in srgb, var(--colorBg), var(--lessTransparent));
     backdrop-filter: none;
 }
 
 .startpage #modal-bg.startpage-drawer section .SpeedDial { /* BG COLOR OF SITES */
-    background-color: color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent));
     border-radius: var(--radius);
 }
 
 .startpage #modal-bg.startpage-drawer .FormButton { /* FIXING NEW FOLDER BUTTON */
-    background-color: color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent));
     border-color: transparent;
     background-image: none;
 }
 
 .startpage #modal-bg.startpage-drawer .FormButton:hover { /* FIXING HOVER OF NEW FOLDER BUTTON */
-    background-color: var(--colorBg);
+    background-color: var(--colorAccentBg);
 }
 
 /* ADD BOOKMARK WINDOW */
@@ -1651,7 +1744,7 @@ input[type=button]:not(.circular).danger.danger:hover { /* FIXING HOVER OF DELET
 
 .BookmarkInputField { /* REMOVING REST UNDERLINES + NEW DESIGN FOR INPUT FIELDS */
     border-bottom: transparent;
-    background-color:  color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent));
     border-radius: var(--radius);
     padding: 0px 8px;
 }
@@ -1666,7 +1759,7 @@ input[type=button]:not(.circular).danger.danger:hover { /* FIXING HOVER OF DELET
 
 .BookmarkPopup .button-toolbar > button { /* FIXING NEW FOLDER BUTTON PART 1 */
     border: none;
-    background-color:  color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent));
 }
 
 .BookmarkLocationSelector-AddFolderButton > button { /* FIXING NEW FOLDER BUTTON PART 2 */
@@ -1674,11 +1767,11 @@ input[type=button]:not(.circular).danger.danger:hover { /* FIXING HOVER OF DELET
 }
 
 .BookmarkPopup .button-toolbar > button:hover { /* FIXING HOVER OF NEW FOLDER BUTTON */
-    background-color: var(--colorBg);
+    background-color: var(--colorAccentBg);
 }
 
 .BookmarkPopup input { /* FIXING BG COLOR OF INPUTS */
-    background-color: color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent));
 }
 
 /* ALLOW SOMETHING WINDOW */
@@ -1689,7 +1782,7 @@ input[type=button]:not(.circular).danger.danger:hover { /* FIXING HOVER OF DELET
 }
 
 .addressfield-popup-container input { /* FIXING BUTTONS */
-    background-color: color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent));
 }
 
 /* SITE INFO WINDOW */
@@ -1704,7 +1797,7 @@ input[type=button]:not(.circular).danger.danger:hover { /* FIXING HOVER OF DELET
 
 .SiteInfo-Label--Active { /* ADJUSTING COLORS OF ACTIVE BLOCKING */
     color: var(--colorFg);
-    background-color: var(--colorBg);
+    background-color: var(--colorAccentBg);
 }
 
 .SiteInfo-Field li, .SiteInfo-Field label, .SiteInfo-Field h3 { /* ADDING SPACE BETWEEN ROWS */
@@ -1716,7 +1809,11 @@ input[type=button]:not(.circular).danger.danger:hover { /* FIXING HOVER OF DELET
 }
 
 .SiteInfo-Content input { /* ADJUSTING THE DESIGN OF BUTTON */
-    background-color:  color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent));
+}
+
+.SiteInfo-Label:hover:not(.SiteInfo-Label--Active) { /* HOVER OF BUTTONS */
+    background-color: var(--colorAccentBg);
 }
 
 /* TRANSLATE WINDOW FROM ULR BAR */
@@ -1731,17 +1828,21 @@ input[type=button]:not(.circular).danger.danger:hover { /* FIXING HOVER OF DELET
 }
 
 .TranslatePopup input { /* FIXING TRANSLATE BUTTON */
-    background-color: color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent));
 }
 
 .TranslatePopup-Buttons-MenuButton { /* FIXING OPTIONS BUTTON */
-    background-color:  color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent));
     border-color: transparent;
+}
+
+.TranslatePopup-Buttons-MenuButton:hover { /* HOVER OF OPTIONS */
+    background-color: var(--colorAccentBg);
 }
 
 /* PAGE CONFIRM INFO WINDOW */
 
-.page-confirm-info-bar { /* ADJUSTING THE DESIGN OF PAGE CONFIRM INFO WINDOW */
+.page-confirm-info-bar { /* ADJUSTING THE DESIGN OF PAGE CONFIRM INFO WINDOW BG */
     background-color:  color-mix(in srgb, var(--colorBg), var(--transparent));
     border-bottom: none;
     backdrop-filter: var(--blur);
@@ -1753,7 +1854,7 @@ input[type=button]:not(.circular).danger.danger:hover { /* FIXING HOVER OF DELET
 }
 
 .page-confirm-info-bar input { /* ADJUSTING THE DESIGN OF RELOAD BUTTON PART 2 */
-    background-color: color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent));
 }
 
 .theme-light .page-confirm-info-bar input { /* REMOVING BORDER OF RELOAD BUTTON IN LIGHT THEME */
@@ -1765,7 +1866,7 @@ input[type=button]:not(.circular).danger.danger:hover { /* FIXING HOVER OF DELET
 }
 
 .page-confirm-info-bar .infobar-controls .close { /* ADDING BG EFFECT FOR HOVER PART 1 */
-    background-color: color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent));
     border-radius: var(--radius);
     margin: 0px;
 }
@@ -1776,7 +1877,7 @@ input[type=button]:not(.circular).danger.danger:hover { /* FIXING HOVER OF DELET
 }
 
 .page-confirm-info-bar .infobar-controls .close:hover { /* ADDING BG EFFECT FOR HOVER PART 3 */
-    background-color: var(--colorBg);
+    background-color: var(--colorAccentBg);
 }
 
 /* RESTART REQUIRED INFO+WINDOW */
@@ -1790,12 +1891,24 @@ input[type=button]:not(.circular).danger.danger:hover { /* FIXING HOVER OF DELET
 }
 
 input[type=submit].danger { /* ADJUSTING DESIGN OF RESTART BUTTON */
-    background-color: color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent));
 }
 
 input[type=submit].danger.danger:hover { /* ADJUSTING DESIGN OF HOVER OF RESTART BUTTON */
     border-color: transparent;
     color: var(--colorFg);
+}
+
+#browser.fullscreen:is(.tabs-top, .tabs-bottom) .toolbar-tabbar-after > div:has(.restart),
+#browser.win.maximized:is(.tabs-top, .tabs-bottom) .toolbar-tabbar-after > div:has(.restart),
+#browser.linux.maximized:is(.tabs-top, .tabs-bottom) .toolbar-tabbar-after > div:has(.restart),
+#browser.fullscreen .mainbar .toolbar > div:has(.restart),
+#browser.win.maximized .mainbar .toolbar > div:has(.restart),
+#browser.linux.maximized .mainbar .toolbar > div:has(.restart),
+#browser.fullscreen .statusbar > div:has(.restart),
+#browser.win.maximized .statusbar > div:has(.restart),
+#browser.linux.maximized .statusbar > div:has(.restart) {
+    padding-right: 0px !important; /* FIXING HOVER EFFECT */
 }
 
 /* INSTALL PWA WINDOW */
@@ -1805,7 +1918,7 @@ input[type=submit].danger.danger:hover { /* ADJUSTING DESIGN OF HOVER OF RESTART
 }
 
 .PwaInstallPopup input { /* ADJUSTING DESIGN OF BUTTONS */
-    background-color: color-mix(in srgb, var(--colorBg), var(--transparent));
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent));
 }
 
 /* AUTOHIDE */
