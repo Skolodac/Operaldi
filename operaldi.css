@@ -189,6 +189,10 @@ li.omni-clickable:not(:last-child) { /* ADDING GAP BETWEEN LINKS IN DROPDOWN URL
    margin-bottom: 3px;  
 }
 
+.OmniLinkItem-DisplayText .displayUrl {
+    color: var(--colorFg); /* CHANGING COLOR OF LINKS IN DROPDOWN URL */
+}
+
 .omni-clickable:hover .displayUrl, .omni-clickable:hover .displayTitle, .omni-clickable:hover span { /* CHANGING COLOR OF HOVER OF LINKS IN DROPDOWN URL */
     color: var(--colorFg);
 }
@@ -477,6 +481,11 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 #tabs-tabbar-container {
     padding: 5px;  /* ADDING SPACE NEXT TO TABS */
 }
+
+#tabs-container.left .tab-strip.overflow, #tabs-container.right .tab-strip.overflow {
+   margin: 0px;
+   max-width: calc(100% - var(--densityGap) * 0); /* FIXING SPACE NEXT TO TABS WHEN MINIMZE THE BROWSER TO HALF THE SCREEN - TABSLEFT+TABSRIGHT */
+}   
 
 #tabs-container.left .tab-strip, #tabs-container.right .tab-strip { /* FIXING SPACE NEXT TO TABS */
     margin: 0;
