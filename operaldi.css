@@ -4,9 +4,6 @@ opravit:
 zkusit upravit označený taby ctrl (asi nejde?)
 float web app panel
 
-moooooooooooožnááá:
-arc like pinned taby?
-
 */
 
 :root {
@@ -609,7 +606,7 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 
 /* ARC PINNED TABS */
 
-#tabs-tabbar-container.horizontal-pinned-tabs:is(.left, .right):not(.tabs-hover-collapsed) .pinned-group { /* DEFAULT VALUES */
+#tabs-tabbar-container.horizontal-pinned-tabs:is(.left, .right):not(.tabs-hover-collapsed) .pinned-group {
     --pin-gap: max(var(--densityGap), 5px); /* SPACE BETWEEN PINNED TABS */
     --pin-inset-left: -2px;  /* FIXING SPACE NEXT TO PINNED TABS GROUP PART 1 */
     --pin-inset-right: 2px;  /* FIXING SPACE NEXT TO PINNED TABS GROUP PART 2 */
@@ -677,9 +674,9 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
     top: calc(50% - 4px) !important;
 }
 
-.in-pinned-group .tab .button-badge { /* ADJUSTING POSITION OF NOTIFICATION DOT */
-    top: 7px;
-    left: 26px;
+#tabs-tabbar-container.horizontal-pinned-tabs:is(.left, .right) .pinned-group .tab.pinned .button-badge { /* ADJUSTING NOTIFICATION DOT IN PINNED TABS */
+    left: calc(50% - 1px);
+    top: calc(50% - 15px);
 }
 
 /* SIDEBAR */
