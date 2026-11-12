@@ -3,6 +3,8 @@ My custom CSS for Vivaldi, inspired by Opera
 
 Screenshots:
 
+<img width="500" alt="image" src="screenshots/arc-pinned-tabs.png" />
+<img width="500" alt="image" src="screenshots/arc-pinned-tabs-examples.png" />
 <img width="500" alt="image" src="screenshots/tabstop.png" />
 <img width="500" alt="image" src="screenshots/tabstop-panel.png" />
 <img width="500" alt="image" src="screenshots/tabstop-panel-urlbar.png" />
