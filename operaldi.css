@@ -337,7 +337,7 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 /* WORKSPACES */
 
 .tabs-left #tabs-tabbar-container .toolbar-tabbar-before, .tabs-right #tabs-tabbar-container .toolbar-tabbar-before {
-    padding: 0px 0px 3px 0px; /* ADJUSTING PADDING OF WORKSPACE BUTTON - TABSLEFT+TABSRIGHT */
+    padding: 0px 0px 5px 0px; /* ADJUSTING PADDING OF WORKSPACE BUTTON - TABSLEFT+TABSRIGHT */
 }
 
 #browser.win.maximized:is(.tabs-top, .tabs-bottom) .toolbar-tabbar-before > div:first-of-type {
@@ -353,7 +353,9 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 } /* ADJUSTING WORKSPACE BUTTON */
 
 .tabs-left .button-toolbar.workspace-popup.tabbar-workspace-button, .tabs-right .button-toolbar.workspace-popup.tabbar-workspace-button {
-    background-color: transparent; /* BG OF WORKSPACE BUTTON */
+    /*background-color: transparent;*/ /* BG OF WORKSPACE BUTTON */
+    background-color:  color-mix(in srgb, var(--colorAccentBg), var(--transparent));
+    border-radius: var(--radius);
 }
 
 .color-behind-tabs-on #tabs-tabbar-container .toolbar-tabbar-before > .button-toolbar:not(.toolbar-spacer, .toolbar-spacer-flexible) > button:not([disabled]):hover, .color-behind-tabs-on #tabs-tabbar-container .toolbar-tabbar-after > .button-toolbar:not(.toolbar-spacer, .toolbar-spacer-flexible) > button:not([disabled]):hover, .color-behind-tabs-on #tabs-tabbar-container .toolbar-tabbar-before > .button-toolbar:not(.toolbar-spacer, .toolbar-spacer-flexible) > button:not([disabled]).button-pressed, .color-behind-tabs-on #tabs-tabbar-container .toolbar-tabbar-after > .button-toolbar:not(.toolbar-spacer, .toolbar-spacer-flexible) > button:not([disabled]).button-pressed {
@@ -451,7 +453,7 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
     padding: 1px 2px;
 }
 
-#browser:not(.alt-tabs) #tabs-container .tab:not(.tab-small).audio-on .favicon { /* HIDING FAVICON WHEN AUDIO IS PLAYING IN PINNED TAB */
+#browser:not(.alt-tabs) #tabs-tabbar-container:is(.left, .right):not(.horizontal-pinned-tabs) .tab.pinned:not(.tab-small).audio-on .favicon { /* HIDING FAVICON WHEN AUDIO IS PLAYING IN REGULAR PINNED TABS */
     transform: scale(0);
 }
 
@@ -580,8 +582,12 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 }
 
 .tabs-left #tabs-container .toolbar-tabbar-after, .tabs-right #tabs-container .toolbar-tabbar-after { /* ADJUSTING POSITION OF ICONS UNDER TABS */
-    /*margin-bottom: 0px; 8.1*/
-    margin-top: 41px;
+    margin-bottom: -1px;
+    margin-top: 6px; /* ADDING SPACE ABOVE WHEN MANY TABS ARE OPENED */
+}
+
+.tabs-left #tabs-tabbar-container .toolbar-tabbar-after, .tabs-right #tabs-tabbar-container .toolbar-tabbar-after {
+    min-height: 34px; /* FIX WHEN MANY TABS ARE OPENED */
 }
 
 .tabs-left #tabs-tabbar-container .toolbar-tabbar-after, .tabs-right #tabs-tabbar-container .toolbar-tabbar-after { /* ADJUSTING PADDING OF ICONS UNDER TABS */
@@ -593,20 +599,87 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
     min-width: 34px;
 } 
 
-#tabs-tabbar-container .toolbar-tabbar-after { /* MOVING ALL ICONS UNDER TABS TO END OF FLEX */
-    align-content: flex-end;
+.tabs-left #tabs-tabbar-container .toolbar-tabbar-before .tabbar-nested-buttons, .tabs-left #tabs-tabbar-container .toolbar-tabbar-after .tabbar-nested-buttons, .tabs-right #tabs-tabbar-container .toolbar-tabbar-before .tabbar-nested-buttons, .tabs-right #tabs-tabbar-container .toolbar-tabbar-after .tabbar-nested-buttons {
+    justify-content: space-between; /* ADDING GAP BETWEEN ICONS UNDER TABS - TABSLEFT+TABSRIGHT */
 }
 
-#tabs-tabbar-container .toolbar-tabbar-after {
-    gap: 9px; /* ADJUSTING GAP BETWEEN ICONS */
+.button-toolbar > button:hover, .button-toolbar > button:active {
+    background-color: var(--colorAccentBg); /* HOVER BG COLOR OF ICONS UNDER TABS */
 }
 
-.tabs-left #tabs-tabbar-container .button-toolbar.newtab { /* REMOVING STRETCH WIDTH FROM NEW TAB ICON - TABSLEFT */
-    width: auto;
+/* ARC PINNED TABS */
+
+#tabs-tabbar-container.horizontal-pinned-tabs:is(.left, .right):not(.tabs-hover-collapsed) .pinned-group { /* DEFAULT VALUES */
+    --pin-gap: max(var(--densityGap), 5px); /* SPACE BETWEEN PINNED TABS */
+    --pin-inset-left: -2px;  /* FIXING SPACE NEXT TO PINNED TABS GROUP PART 1 */
+    --pin-inset-right: 2px;  /* FIXING SPACE NEXT TO PINNED TABS GROUP PART 2 */
+    --pin-col: 0;
+    --pin-cols: 4;
 }
 
-.tabs-right #tabs-tabbar-container .button-toolbar.newtab { /* REMOVING STRETCH WIDTH FROM NEW TAB ICON - TABSRIGHT */
-    width: auto;
+#tabs-tabbar-container.horizontal-pinned-tabs:is(.left, .right) .pinned-group { /* PINNED GROUP AS CONTAINER */
+    container: pinned-grid / inline-size;
+}
+
+@container pinned-grid (width >= 208px) { /* 4 PER ROW - DEFAULT */
+    #tabs-tabbar-container.horizontal-pinned-tabs:is(.left, .right) .pinned-group > * { --pin-cols: 4; }
+    #tabs-tabbar-container.horizontal-pinned-tabs:is(.left, .right) .pinned-group > :nth-child(4n+2) { --pin-col: 1; }
+    #tabs-tabbar-container.horizontal-pinned-tabs:is(.left, .right) .pinned-group > :nth-child(4n+3) { --pin-col: 2; }
+    #tabs-tabbar-container.horizontal-pinned-tabs:is(.left, .right) .pinned-group > :nth-child(4n+4) { --pin-col: 3; }
+
+    #tabs-tabbar-container.horizontal-pinned-tabs:is(.left, .right) .pinned-group > :nth-child(4n+1):nth-last-child(1) { --pin-cols: 1; }
+
+    #tabs-tabbar-container.horizontal-pinned-tabs:is(.left, .right) .pinned-group > :nth-child(4n+1):nth-last-child(2),
+    #tabs-tabbar-container.horizontal-pinned-tabs:is(.left, .right) .pinned-group > :nth-child(4n+1):nth-last-child(2) ~ * { --pin-cols: 2; }
+
+    #tabs-tabbar-container.horizontal-pinned-tabs:is(.left, .right) .pinned-group > :nth-child(4n+1):nth-last-child(3),
+    #tabs-tabbar-container.horizontal-pinned-tabs:is(.left, .right) .pinned-group > :nth-child(4n+1):nth-last-child(3) ~ * { --pin-cols: 3; }
+}
+
+@container pinned-grid (158px <= width < 208px) { /* 3 PER ROW - EXPANDING */
+    #tabs-tabbar-container.horizontal-pinned-tabs:is(.left, .right) .pinned-group > * { --pin-cols: 3; }
+    #tabs-tabbar-container.horizontal-pinned-tabs:is(.left, .right) .pinned-group > :nth-child(3n+2) { --pin-col: 1; }
+    #tabs-tabbar-container.horizontal-pinned-tabs:is(.left, .right) .pinned-group > :nth-child(3n+3) { --pin-col: 2; }
+
+    #tabs-tabbar-container.horizontal-pinned-tabs:is(.left, .right) .pinned-group > :nth-child(3n+1):nth-last-child(1) { --pin-cols: 1; }
+
+    #tabs-tabbar-container.horizontal-pinned-tabs:is(.left, .right) .pinned-group > :nth-child(3n+1):nth-last-child(2),
+    #tabs-tabbar-container.horizontal-pinned-tabs:is(.left, .right) .pinned-group > :nth-child(3n+1):nth-last-child(2) ~ * { --pin-cols: 2; }
+}
+
+@container pinned-grid (width < 158px) { /* 2 PER ROW - EXPANDING */
+    #tabs-tabbar-container.horizontal-pinned-tabs:is(.left, .right) .pinned-group > * { --pin-cols: 2; }
+    #tabs-tabbar-container.horizontal-pinned-tabs:is(.left, .right) .pinned-group > :nth-child(2n+2) { --pin-col: 1; }
+
+    #tabs-tabbar-container.horizontal-pinned-tabs:is(.left, .right) .pinned-group > :nth-child(2n+1):nth-last-child(1) { --pin-cols: 1; }
+}
+
+#tabs-tabbar-container.horizontal-pinned-tabs:is(.left, .right):not(.tabs-hover-collapsed) .pinned-group .tab-position.is-pinned:not(.in-pinbox) {
+    padding: 0 !important; /* REMOVING EXTRA SPACE BETWEEN PINNED TABS */
+    width: calc((100% - var(--pin-inset-left) - var(--pin-inset-right) - (var(--pin-cols) - 1) * var(--pin-gap)) / var(--pin-cols)) !important; /* EXPANDING TABS */
+    --PositionX: calc(var(--pin-inset-left) + var(--pin-col) * (100% + var(--pin-gap))) !important; /* FIXING POSITION OF EXPANDING TABS */
+}
+
+#tabs-tabbar-container.horizontal-pinned-tabs:is(.left, .right):not(.tabs-hover-collapsed) .pinned-group .tab-position.is-pinned:not(.in-pinbox) .tab {
+    max-height: calc(var(--Height) - var(--pin-gap)) !important; /* FIXING SPACE BETWEEN ROWS */
+}
+
+#tabs-tabbar-container.horizontal-pinned-tabs:is(.left, .right):has(.pinned-group .is-pinned) .tab-strip:not(:has(.pinned-group)) {
+    margin-top: -4px; /* FIXING SPACE UNDER PINNED TABS GROUP */
+}
+
+.tab .tab-header.in-pinned-group { /* BG COLOR OF PINNED TABS */
+    background-color: color-mix(in srgb, var(--colorAccentBg), var(--transparent));
+}
+
+#tabs-tabbar-container.horizontal-pinned-tabs:is(.left, .right) .pinned-group .tab.pinned:is(.audio-on, .audio-muted, .tab-captured) .tab-audio { /* AUDIO ICON AS BADGE IN BOTTOM RIGHT CORNER OF FAVICON IN PINNED TAB */
+    left: calc(50% - 1px) !important; /* ADJUSTING POSITION OF AUDIO ICON IN ARC PINNED TABS */
+    top: calc(50% - 4px) !important;
+}
+
+.in-pinned-group .tab .button-badge { /* ADJUSTING POSITION OF NOTIFICATION DOT */
+    top: 7px;
+    left: 26px;
 }
 
 /* SIDEBAR */
@@ -804,6 +877,15 @@ select:enabled:not([multiple], [size]):hover:not(:disabled), .VivaldiSelector:no
 
 #browser .sortselector.sortselector-compact .sortselector-button { /* REMOVED BORDER NEXT TO ARROW IN SORT */
     border-left: none;
+}
+
+#browser .sortselector.sortselector-compact { /* REMOVING UGLY BORDER OF SORT */
+    border-left: none;
+    border-right: none;
+}
+
+#browser .sortselector.sortselector-compact .sortselector-button { /* REMOVING BACKGROUND OF SORT */
+    background: none;
 }
 
 .toolbar-default .button-toolbar > button:enabled { /* REMOVING BG OF BUTTONS */
