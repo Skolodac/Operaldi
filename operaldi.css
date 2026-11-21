@@ -1915,6 +1915,10 @@ input[type=button]:not(.circular).danger.danger:hover { /* FIXING HOVER OF DELET
     padding: 6px;
 }
 
+.SiteInfo-Field.SiteInfo-Field-ContentBlocker {
+    background-color: transparent; /* REMOVING BG COLOR OF BLOCKER */
+}
+
 .segmented-control.segmented-control option {
     margin-left: 6px; /* FIXING POSITION OF BLOCKING OPTIONS */
 }
@@ -1925,6 +1929,10 @@ input[type=button]:not(.circular).danger.danger:hover { /* FIXING HOVER OF DELET
 
 .SiteInfo-Label:hover:not(.SiteInfo-Label--Active) { /* HOVER OF BUTTONS */
     background-color: var(--colorAccentBg);
+}
+
+.SiteInfo-Footer {
+    background-color: transparent; /* REMOVING BG COLOR OF FOOTER */
 }
 
 /* TRANSLATE WINDOW FROM ULR BAR */
