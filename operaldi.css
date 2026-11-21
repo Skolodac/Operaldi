@@ -14,12 +14,12 @@ float web app panel
 
 /* SETTINGS OF ALL INPUTS */
 
-select:not(.sortselector-dropdown) { /* ADJUSTING SELECTS IN MANY WINDOWS ETC */
+select:not(.sortselector-dropdown), .FormButton { /* ADJUSTING SELECTS IN MANY WINDOWS ETC */
     background-color: color-mix(in srgb, var(--colorAccentBg), var(--transparent)) !important;
     border-color: transparent;
 }
 
-input[type=button]:not(.circular), input[type=submit]:not(.circular), input[type=submit][type=submit] { /* REMOVING BG IMAGE FROM BUTTONS IN MANY WINDOWS ETC */
+input[type=button]:not(.circular), input[type=submit]:not(.circular), input[type=submit][type=submit], .FormButton { /* REMOVING BG IMAGE FROM BUTTONS IN MANY WINDOWS ETC */
     background-image: none;
 }
 
@@ -28,7 +28,7 @@ input[type=button]:not(.circular).primary, input[type=submit]:not(.circular).pri
     border-color: transparent;
 }
 
-input[type=button]:not(.circular).primary:hover, input[type=submit]:not(.circular).primary:hover, input[type=submit][type=submit]:hover { /* REMOVING UGLY COLORS FROM HOVER OF PRIMARY BUTTON IN MANY WINDOWS ETC */
+input[type=button]:not(.circular).primary:hover, input[type=submit]:not(.circular).primary:hover, input[type=submit][type=submit]:hover, .FormButton:hover { /* REMOVING UGLY COLORS FROM HOVER OF PRIMARY BUTTON IN MANY WINDOWS ETC */
     color: var(--colorFg);
     background: var(--colorAccentBg) !important;
     border-color: transparent;
@@ -132,10 +132,6 @@ input[type=checkbox]:before, input[type=checkbox]:after { /* COLOR OF ICON IN CH
 .popup .mainbar { /* DIFFERENT SETTINGS OF MAINBAR FOR POPUP WINDOW */
     margin: 5px !important;
     padding: 6px 0px 6px 2px;
-}
-
-#browser.fullscreen .mainbar {
-    margin: 0px /* REMOVING MARGIN FROM MAINBAR WHEN IN FULLSCREEN */
 }
 
 .SearchField, .UrlBar-AddressField { /* SEARCHBAR SETTINGS */
@@ -334,7 +330,7 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 /* WORKSPACES */
 
 .tabs-left #tabs-tabbar-container .toolbar-tabbar-before, .tabs-right #tabs-tabbar-container .toolbar-tabbar-before {
-    padding: 0px 0px 5px 0px; /* ADJUSTING PADDING OF WORKSPACE BUTTON - TABSLEFT+TABSRIGHT */
+    padding: 0px 0px 3px 0px; /* ADJUSTING PADDING OF WORKSPACE BUTTON - TABSLEFT+TABSRIGHT */
 }
 
 #browser.win.maximized:is(.tabs-top, .tabs-bottom) .toolbar-tabbar-before > div:first-of-type {
@@ -381,7 +377,7 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
     margin-right: 5px;
 }  
 
-#header { /* POSITION OF TAB BAR - TABSTOP */
+#browser:not(.fullscreen) #header { /* POSITION OF TAB BAR - TABSTOP */
     margin: 5px 5px 0px 5px;
 }
 
@@ -607,7 +603,7 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 /* ARC PINNED TABS */
 
 #tabs-tabbar-container.horizontal-pinned-tabs:is(.left, .right):not(.tabs-hover-collapsed) .pinned-group {
-    --pin-gap: max(var(--densityGap), 5px); /* SPACE BETWEEN PINNED TABS */
+    --pin-gap: max(var(--densityGap), 1px); /* SPACE BETWEEN PINNED TABS */
     --pin-inset-left: -2px;  /* FIXING SPACE NEXT TO PINNED TABS GROUP PART 1 */
     --pin-inset-right: 2px;  /* FIXING SPACE NEXT TO PINNED TABS GROUP PART 2 */
     --pin-col: 0;
@@ -675,7 +671,7 @@ button.ToolbarButton-Button[name="TilingToggle"] { /* FIXING SPACE NEXT TO TAB T
 }
 
 #tabs-tabbar-container.horizontal-pinned-tabs:is(.left, .right) .pinned-group .tab.pinned .button-badge { /* ADJUSTING NOTIFICATION DOT IN PINNED TABS */
-    left: calc(50% - 1px);
+    left: calc(50% + 2px);
     top: calc(50% - 15px);
 }
 
@@ -1166,8 +1162,9 @@ background-color: transparent;
     gap: 9px; /* ADJUSTING THE GAP BETWEEN TILES */
 }
 
-.isblurred#browser:not(.narrow-tiling) .tile:has(> .tiled.active.visible):after {
-    outline-color: var(--colorErrorBg); /* COLOR OF BORDER OF ACTIVE TAB TILE WHEN BROWSER IS NOT FOCUSED */
+.isblurred#browser:not(.narrow-tiling) .tile:has(> .webpageview.tiled.visible.active) {
+    box-shadow: 0 0 0 2px var(--colorErrorBg); /* COLOR OF BORDER OF ACTIVE TAB TILE WHEN BROWSER IS NOT FOCUSED */
+    border-radius: var(--radius);
 }
 
 .isblurred#browser:not(.narrow-tiling) .tile:has(> .tiled.active.visible) .webpageview { /* REMOVING WEIRD CORNER OF ACTIVE TAB TILE WHEN BROWSER IS NOT FOCUSED */
@@ -1175,8 +1172,9 @@ background-color: transparent;
     overflow: hidden !important;
 }
 
-.hasfocus#browser:not(.narrow-tiling) .tile:has(> .tiled.active.visible):after {
-    outline-color: var(--colorErrorBg); /* COLOR OF BORDER OF ACTIVE TAB TILE WHEN BROWSER IS FOCUSED */
+.hasfocus#browser:not(.narrow-tiling) .tile:has(> .webpageview.tiled.visible.active) {
+    box-shadow: 0 0 0 2px var(--colorErrorBg); /* COLOR OF BORDER OF ACTIVE TAB TILE WHEN BROWSER IS FOCUSED */
+    border-radius: var(--radius);
 }
 
 .hasfocus#browser:not(.narrow-tiling) .tile:has(> .tiled.active.visible) .webpageview { /* REMOVING WEIRD CORNER OF ACTIVE TAB TILE WHEN BROWSER IS FOCUSED */
@@ -1194,6 +1192,18 @@ background-color: transparent;
     box-shadow: 0 0 0 2px var(--colorBg); /* COLOR OF BORDER OF NONACTIVE TAB TILE WHEN BROWSER IS FOCUSED */
     border-radius: var(--radius);
     overflow: hidden;
+}
+
+#browser:not(.is-settingspage, .first-start, .inner, .fullscreen.auto-hide, .fullscreen.minimal-ui):not(.narrow-tiling) #webpage-stack .webpageview.tiled.visible.active:before {
+    outline: 1px solid transparent; /* HIDING WEIRD BORDER PART 1 */
+}
+
+#browser:not(.is-settingspage, .first-start, .inner, .fullscreen.auto-hide, .fullscreen.minimal-ui):not(.narrow-tiling) #webpage-stack .webpageview.tiled.visible:before {
+    border: 1px solid transparent; /* HIDING WEIRD BORDER PART 2 */
+}
+
+.hasfocus#browser:not(.is-settingspage, .first-start, .inner, .fullscreen.auto-hide, .fullscreen.minimal-ui):not(.narrow-tiling) #webpage-stack .webpageview.tiled.visible.active:before {
+    border-color: transparent; /* HIDING WEIRD BORDER PART 3 */
 }
 
 /* SPEED DIAL */
@@ -1413,6 +1423,7 @@ select:enabled:not([multiple], [size]), .SpeedDialView-Settings .VivaldiSelector
     backdrop-filter: var(--blur);
     -webkit-backdrop-filter: var(--blur);
     border-radius: var(--radius);
+    color: var(--colorFg);
 }
 
 .SpeedDial-Add-Button:hover { /* FIXING BOTTOM BUTTONS PART 3 */
@@ -1875,6 +1886,14 @@ input[type=button]:not(.circular).danger.danger:hover { /* FIXING HOVER OF DELET
 
 /* SITE INFO WINDOW */
 
+.SiteInfo-Field {
+    padding: 12px; /* FIXING SPACING PART 1 */
+}
+
+.SiteInfo-Content {
+    margin-right: 12px; /* FIXING SPACING PART 2 */
+}
+
 .SiteInfo-Header { /* REMOVING UNDERLINE PART 1 */
     border-bottom: none;
 }
@@ -1894,6 +1913,10 @@ input[type=button]:not(.circular).danger.danger:hover { /* FIXING HOVER OF DELET
 
 .SiteInfo-Label { /* ADJUSTING THE HEIGHT OF LABELS */
     padding: 6px;
+}
+
+.segmented-control.segmented-control option {
+    margin-left: 6px; /* FIXING POSITION OF BLOCKING OPTIONS */
 }
 
 .SiteInfo-Content input { /* ADJUSTING THE DESIGN OF BUTTON */
@@ -2120,7 +2143,7 @@ input[type=submit].danger.danger:hover { /* ADJUSTING DESIGN OF HOVER OF RESTART
     color: var(--colorFg); /* FIXING COLOR OF HAMBURGER ICON WHEN TABSTOP AND IN AUTOHIDE - TABSTOP */
 }
 
-#browser.tabs-top.auto-hide .tabbar-wrapper, #browser.tabs-top #header {
+#browser.tabs-top.auto-hide .tabbar-wrapper {
     margin: 5px 5px 0px 5px; /* POSITION OF AUTOHIDE TAB BAR - TABSTOP */
 }
 
